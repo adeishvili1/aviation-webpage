@@ -1,7 +1,7 @@
 <template>
   <div class="fixed top-0 left-0 w-full z-50">
     <!-- Top Bar -->
-    <div class="stat-glow hidden lg:block" style="backdrop-filter: blur(40px)">
+    <div class="stat-glow hidden lg:block" style="backdrop-filter: blur(100px)">
       <div class="w-full px-10 py-1.5 flex items-center justify-between">
         <!-- Social Icons -->
         <div class="flex items-center gap-2">
@@ -29,8 +29,8 @@
             <button @click="locale = 'ka'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'ka' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">ქარ</button>
             <span class="text-white/20">|</span>
             <button @click="locale = 'en'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'en' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">Eng</button>
-            <span class="text-white/20">|</span>
-            <button @click="locale = 'ru'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'ru' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">Rus</button>
+            
+            
           </div>
         </div>
       </div>
