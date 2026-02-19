@@ -1,7 +1,7 @@
 <template>
   <div class="fixed top-0 left-0 w-full z-50">
     <!-- Top Bar -->
-    <div class="stat-glow hidden lg:block" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(30, 58, 138, 0.9))">
+    <div class="stat-glow hidden lg:block" style="backdrop-filter: blur(40px)">
       <div class="w-full px-10 py-1.5 flex items-center justify-between">
         <!-- Social Icons -->
         <div class="flex items-center gap-2">
