@@ -1,7 +1,7 @@
 <template>
   <div class="fixed top-0 left-0 w-full z-50">
     <!-- Top Bar -->
-    <div class="bg-black/80 border-b border-white/10 hidden lg:block">
+    <div class="bg-blue-600 border-b border-blue-500/30 hidden lg:block">
       <div class="w-full px-10 py-1.5 flex items-center justify-between">
         <!-- Social Icons -->
         <div class="flex items-center gap-2">
