@@ -2,7 +2,12 @@
   <div class="bg-brand-950 min-h-screen">
     <PageHero title="პარტნიორები" subtitle="ჩვენი საერთაშორისო პარტნიორები" />
 
-    <div class="max-w-7xl mx-auto px-6 pb-20 -mt-10 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 pb-20 -mt-10 relative z-10 space-y-6">
+      <!-- Customers and Partners World Map -->
+      <div class="bg-white rounded-xl overflow-hidden border border-blue-500/15 shadow-2xl shadow-black/30 p-6">
+        <img src="../../assets/docx-images/image54.png" alt="Customers and Partners World Map" class="w-full object-contain" />
+      </div>
+
       <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
         <div class="border-l-4 border-blue-400 pl-6 mb-8">
           <h3 class="text-2xl font-bold text-white">პარტნიორი ქვეყნები</h3>

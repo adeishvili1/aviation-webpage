@@ -29,8 +29,8 @@
             <button @click="locale = 'ka'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'ka' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">ქარ</button>
             <span class="text-white/20">|</span>
             <button @click="locale = 'en'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'en' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">Eng</button>
-            
-            
+            <span class="text-white/20">|</span>
+            <button @click="locale = 'ru'" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'ru' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">Rus</button>
           </div>
         </div>
       </div>

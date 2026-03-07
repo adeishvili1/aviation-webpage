@@ -2,16 +2,35 @@
   <section id="innovation" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
+      <!-- ELITE-Jet technical drawings gallery -->
+      <div class="mb-16 reveal">
+        <h3 class="text-xl font-bold text-gray-700 mb-4 uppercase tracking-widest text-sm">ELITE-Jet — Technical Drawings & Layouts</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image5.jpeg" alt="ELITE-Jet technical blueprint" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">Technical Blueprint</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image6.jpeg" alt="ELITE-Jet 6-seater interior layout" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">6-Seater Interior Layout</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image7.jpeg" alt="ELITE-Jet 9-seater interior layout" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">9-Seater Interior Layout</p>
+          </div>
+        </div>
+      </div>
+
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Content -->
         <div class="reveal">
           <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">ინოვაცია</span>
           <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900 leading-tight">
-            ტექნოლოგიის <span class="text-blue-600">მომავლის</span> ფრონტისთვის
+            ავიაციის <span class="text-blue-600">კონცეფციები</span>
           </h2>
           <p class="text-gray-500 mt-6 text-lg leading-relaxed">
-            ჩვენი თითოეული უახლესი ტექნოლოგიის და ინოვაციური სისტემის, რომ შევქმნათ
-            აეროპლანები, რომლებიც განსაზღვრავს ავიაციის მომავალს.
+            სს „თბილავიამშენი" ავიაციის სამომავლო კონცეფციებს ავითარებს — Business Jet კლასის
+            საფრენი აპარატებიდან, თანამედროვე კომპოზიტური ტექნოლოგიებით შექმნილ ELITE-Jet-მდე.
           </p>
 
           <div class="mt-10 space-y-6">
@@ -29,36 +48,25 @@
           </div>
         </div>
 
-        <!-- Right: Cockpit Dashboard -->
-        <div class="reveal relative" style="transition-delay:0.2s">
-          <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-900 to-brand-950 p-12 min-h-[500px] flex items-center justify-center">
-            <svg viewBox="0 0 400 300" class="w-full" fill="none">
-              <rect x="20" y="20" width="360" height="260" rx="20" stroke="#3b82f6" stroke-width="1.5" opacity="0.3"/>
-              <rect x="40" y="40" width="150" height="100" rx="8" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
-              <rect x="210" y="40" width="150" height="100" rx="8" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
-              <circle cx="115" cy="90" r="35" fill="#0c1e4a" stroke="#60a5fa" stroke-width="1"/>
-              <line x1="80" y1="90" x2="150" y2="90" stroke="#60a5fa" stroke-width="1"/>
-              <path d="M100 90 L115 80 L130 90" stroke="#3b82f6" stroke-width="1.5" fill="none"/>
-              <rect x="215" y="50" width="60" height="80" rx="4" fill="#0c1e4a" stroke="#60a5fa" stroke-width="0.5"/>
-              <text x="245" y="95" text-anchor="middle" fill="#60a5fa" font-size="18" font-weight="bold">556</text>
-              <text x="245" y="110" text-anchor="middle" fill="#3b82f6" font-size="8">KM/H</text>
-              <rect x="290" y="50" width="60" height="80" rx="4" fill="#0c1e4a" stroke="#60a5fa" stroke-width="0.5"/>
-              <text x="320" y="95" text-anchor="middle" fill="#60a5fa" font-size="16" font-weight="bold">7620</text>
-              <text x="320" y="110" text-anchor="middle" fill="#3b82f6" font-size="8">M ALT</text>
-              <rect x="40" y="160" width="320" height="100" rx="8" fill="#1e3a8a" stroke="#3b82f6" stroke-width="0.5" opacity="0.3"/>
-              <circle cx="80" cy="210" r="15" fill="#0c1e4a" stroke="#3b82f6" stroke-width="1"/>
-              <circle cx="80" cy="210" r="5" fill="#3b82f6" opacity="0.5"/>
-              <circle cx="140" cy="210" r="15" fill="#0c1e4a" stroke="#3b82f6" stroke-width="1"/>
-              <circle cx="200" cy="210" r="15" fill="#0c1e4a" stroke="#60a5fa" stroke-width="1.5"/>
-              <text x="200" y="214" text-anchor="middle" fill="#60a5fa" font-size="8" font-weight="bold">AP</text>
-              <circle cx="260" cy="210" r="15" fill="#0c1e4a" stroke="#3b82f6" stroke-width="1"/>
-              <circle cx="320" cy="210" r="15" fill="#0c1e4a" stroke="#3b82f6" stroke-width="1"/>
-              <circle cx="50" cy="170" r="3" fill="#22c55e"/>
-              <circle cx="65" cy="170" r="3" fill="#22c55e"/>
-              <circle cx="80" cy="170" r="3" fill="#3b82f6"/>
-              <circle cx="95" cy="170" r="3" fill="#3b82f6"/>
-            </svg>
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-blue-600/10 blur-3xl rounded-full"></div>
+        <!-- Right: Aircraft Images -->
+        <div class="reveal relative space-y-4" style="transition-delay:0.2s">
+          <!-- ELITE-Jet main photo -->
+          <div class="relative rounded-3xl overflow-hidden">
+            <img src="../assets/docx-images/image3.jpeg" alt="ELITE-Jet business aircraft" class="w-full object-cover rounded-3xl" style="max-height:300px;" />
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 rounded-b-3xl">
+              <p class="text-white font-semibold text-sm">ELITE-Jet — Business Aviation Concept</p>
+            </div>
+          </div>
+          <!-- ELITE-Jet labeled diagram -->
+          <div class="rounded-2xl overflow-hidden bg-white p-3">
+            <img src="../assets/docx-images/image9.png" alt="ELITE-Jet labeled components diagram" class="w-full object-contain" />
+          </div>
+          <!-- GE-31 cockpit avionics -->
+          <div class="rounded-2xl overflow-hidden">
+            <img src="../assets/docx-images/image8.jpeg" alt="GE-31 BORA integrated avionics cockpit" class="w-full object-cover" style="max-height:200px;" />
+            <div class="bg-brand-900/80 p-3 text-center">
+              <p class="text-blue-300 text-xs font-medium">GE-31 — Integrated Avionics System (BORA)</p>
+            </div>
           </div>
           <div class="absolute -top-4 -right-4 w-24 h-24 opacity-20" style="background-image: radial-gradient(#3b82f6 1.5px, transparent 1.5px); background-size: 12px 12px;"></div>
         </div>
@@ -70,19 +78,19 @@
 <script setup>
 const features = [
   {
-    title: 'ჰიბრიდული ძრავა',
-    desc: 'ელექტრო-საწვავის ჰიბრიდული სისტემა 40%-ით ნაკლები გაფრქვევა',
+    title: 'ELITE-Jet (6 & 9 seater)',
+    desc: '6-ადგილიანი და 9-ადგილიანი ELITE-Jet NG — შექმნილია კომპოზიტური მასალებით თანამედროვე ტექნოლოგიებით. საოფისე და გართობის სისტემები, Sat com, DVD/CD, საჰაერო შოუ სისტემა.',
+    icon: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
+  },
+  {
+    title: 'GE-31 Attack Aircraft',
+    desc: 'ახალი საიერიშო თვითმფრინავი GE-31 — Su-25 ტიპის მოდიფიკაცია დასავლური წარმოების ახალი ავიონიკით, ძრავებით, სარადიო-ელექტრონული და ფრენ-ნავიგაციური სისტემებით.',
     icon: 'M13 10V3L4 14h7v7l9-11h-7z',
   },
   {
-    title: 'ციფრული კაბინა',
-    desc: 'სრულიად ციფრული კაბინა AI-ით გაძლიერებული ფრენის მართვა',
-    icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-  },
-  {
-    title: 'მსუბუქი კომპოზიტები',
-    desc: 'ახალი თაობის კომპოზიტური მასალების წონის შემცირება',
-    icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+    title: 'Business Class Aircraft',
+    desc: 'Business Class კლასის საფრენი აპარატები — სრული გალი, გართობის სისტემა, კლუბური სავარძლები და ყველა თანამედროვე მგზავრის კომფორტის ელემენტი.',
+    icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
   },
 ]
 </script>

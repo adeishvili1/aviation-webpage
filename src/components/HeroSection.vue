@@ -44,21 +44,21 @@
         <div>
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 mb-8">
             <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-            <span class="text-blue-300 text-sm font-medium">სამოქალაქო ავიაციის მომავალი</span>
+            <span class="text-blue-300 text-sm font-medium">ქართული ავიაციის მომავალი</span>
           </div>
 
-          <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
-            ცა <span class="gradient-text">უფრო ახლოს</span> გახდა თქვენთან
+          <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-3">
+            სანდო პარტნიორი <span class="gradient-text">ავიაციაში</span>
           </h1>
+          <p class="text-sm font-semibold text-blue-300/60 tracking-widest uppercase mb-6">Trusted Aviation Partner</p>
 
           <p class="text-lg text-blue-200/80 leading-relaxed mb-10 max-w-xl">
-            ჩვენი ქვეყანის საჰაერო ხომალდების, რომლებიც აერთიანებს ინოვაციურ ტექნოლოგიებს,
-            მაქსიმალურ კომფორტს და მდგრადობის უმაღლეს. თქვენი მომავალი იწყება აქ.
+            მრავალწლიანი გამოცდილების მქონე, რეგიონში წამყვანი საავიაციო საწარმო, კვალიფიციური პერსონალითა და სრული მატერიალურ-ტექნიკური ბაზით.
           </p>
 
           <div class="flex flex-wrap gap-4">
             <a href="#fleet" class="group px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transition-all hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1 flex items-center gap-2" @click.prevent="scrollTo('fleet')">
-              ფლოტის ნახვა
+              პროდუქცია
               <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
@@ -93,10 +93,10 @@ const particles = [
 ]
 
 const stats = [
-  { count: 78, label: 'თანამედროვე აეროპლანი' },
-  { count: 200, label: '+ კომპეტენტურ თასამშრომელი' },
-  { count: 100, label: '+ ქვეყანაში ოპერაციები' },
-  { count: 40, label: '% ნაკლები CO₂ გაფრქვევა' },
+  { count: 40000, label: 'წარმოებული რაკეტა' },
+  { count: 8500, label: '+ წარმოებული თვითმფრინავი' },
+  { count: 300, label: '+ საფრენი აპარატის მომსახურება' },
+  { count: 85, label: 'წლიანი გამოცდილება' },
 ]
 
 function scrollTo(id) {

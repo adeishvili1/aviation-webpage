@@ -67,6 +67,26 @@
               <p>მიხეილ ქუთათელაძემ დაამთავრა საქართველოს ტექნიკური უნივერსიტეტი, მექანიკის ფაკულტეტი, ინჟინერ-მექანიკოსის სპეციალობით.</p>
             </div>
           </div>
+
+          <!-- Management Team -->
+          <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
+            <div class="border-l-4 border-blue-400 pl-6 mb-6">
+              <h3 class="text-2xl font-bold text-white">სამართავი გუნდი</h3>
+            </div>
+            <div class="space-y-4">
+              <div v-for="member in team" :key="member.name" class="flex items-center gap-4 p-4 bg-blue-500/10 rounded-lg border border-blue-500/15">
+                <div class="w-12 h-12 rounded-full bg-blue-600/30 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-white font-semibold">{{ member.name }}</div>
+                  <div class="text-blue-300 text-sm">{{ member.role }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
 
         <PageSidebar title="ჩვენს შესახებ" :links="sidebarLinks" />
@@ -82,4 +102,14 @@ import { getSidebarLinks } from '../../data/navigation.js'
 import directorPhoto from '../../assets/director-photo.jpg'
 
 const sidebarLinks = getSidebarLinks('about')
+
+const team = [
+  { name: 'მიხეილ ქუთათელაძე', role: 'გენერალური დირექტორი' },
+  { name: 'ნოდარ ბერიძე', role: 'აღმასრულებელი დირექტორი' },
+  { name: 'გიორგი ჯამასპაშვილი', role: 'წარმოების დირექტორი' },
+  { name: 'ალბერტ ლოლაშვილი', role: 'ტექნიკური დირექტორი' },
+  { name: 'რომან იჩქიტიძე', role: 'ხარისხის მართვის დირექტორი' },
+  { name: 'გიორგი ნოზაძე', role: 'ფინანსური დირექტორი' },
+  { name: 'ოთარ ლომიძე', role: 'კომერციული დირექტორი' },
+]
 </script>

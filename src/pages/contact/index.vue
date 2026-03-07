@@ -3,17 +3,16 @@
     <PageHero title="კონტაქტი" subtitle="დაგვიკავშირდით" />
 
     <div class="max-w-7xl mx-auto px-6 pb-20 -mt-10 relative z-10 space-y-8">
-      <!-- Map Placeholder -->
+      <!-- Google Maps -->
       <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 overflow-hidden">
-        <div class="h-80 bg-blue-900/30 flex items-center justify-center">
-          <div class="text-center">
-            <svg class="w-16 h-16 text-blue-400/30 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            <p class="text-white/40">რუკა მალე დაემატება</p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d490.5!2d44.8773733!3d41.6682696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440fffe8b30641%3A0xc717db8471e67396!2sJSC%20%22TAM%22%20Tbilisi%20Aircraft%20Manufacturing!5e0!3m2!1ska!2sge!4v1"
+          class="w-full h-80"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
@@ -33,7 +32,7 @@
               </div>
               <div>
                 <h4 class="text-white font-semibold mb-1">მისამართი</h4>
-                <p class="text-blue-200/60 text-sm">თბილისი, საქართველო</p>
+                <p class="text-blue-200/60 text-sm">191 ბერი გაბრიელ სალოსის გამზირი, 0144, თბილისი, საქართველო</p>
               </div>
             </div>
 
@@ -45,7 +44,7 @@
               </div>
               <div>
                 <h4 class="text-white font-semibold mb-1">ტელეფონი</h4>
-                <p class="text-blue-200/60 text-sm">+995 (32) XXX XX XX</p>
+                <p class="text-blue-200/60 text-sm">+032 2 70 00 57</p>
               </div>
             </div>
 
@@ -57,7 +56,7 @@
               </div>
               <div>
                 <h4 class="text-white font-semibold mb-1">ელ. ფოსტა</h4>
-                <p class="text-blue-200/60 text-sm">info@tbilaircraft.ge</p>
+                <p class="text-blue-200/60 text-sm">info@tam.ge</p>
               </div>
             </div>
           </div>
@@ -70,13 +69,27 @@
           </div>
 
           <div class="space-y-4">
-            <div>
-              <label class="block text-sm font-medium text-blue-300/80 mb-2">სახელი</label>
-              <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="თქვენი სახელი">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-blue-300/80 mb-2">სახელი</label>
+                <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="სახელი">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-blue-300/80 mb-2">გვარი</label>
+                <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="გვარი">
+              </div>
             </div>
             <div>
               <label class="block text-sm font-medium text-blue-300/80 mb-2">ელ. ფოსტა</label>
               <input type="email" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="email@example.com">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-blue-300/80 mb-2">ტელეფონი</label>
+              <input type="tel" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="+995 XXX XX XX XX">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-blue-300/80 mb-2">Subject</label>
+              <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="თემა">
             </div>
             <div>
               <label class="block text-sm font-medium text-blue-300/80 mb-2">შეტყობინება</label>

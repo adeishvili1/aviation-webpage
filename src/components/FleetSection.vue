@@ -2,47 +2,41 @@
   <section id="fleet" class="py-24 bg-white relative">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
-        <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">ჩვენი ფლოტი</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">საჰაერო <span class="text-blue-600">ხომალდები</span></h2>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">ახალი თაობის ტურბოპროპ აეროპლანები, რომლებიც აერთიანებს ეფექტურობას, კომფორტს და ინოვაციას</p>
+        <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">პროდუქცია</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">წარმოებული <span class="text-blue-600">საფრენი აპარატები</span></h2>
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">85 წლის მანძილზე 8 500-ზე მეტი სხვადასხვა ტიპის საფრენი აპარატის წარმოება და რემონტი</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         <div
-          v-for="(aircraft, index) in aircrafts"
-          :key="aircraft.name"
+          v-for="(category, index) in categories"
+          :key="category.title"
           class="card-hover rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-lg reveal"
           :style="{ transitionDelay: index * 0.15 + 's' }"
         >
-          <div class="img-zoom h-56 flex items-center justify-center relative" :class="aircraft.bgClass">
-            <!-- Aircraft SVG -->
-            <svg :viewBox="aircraft.svgViewBox" :class="aircraft.svgClass" fill="none">
-              <component :is="'template'" v-if="false" />
-              <ellipse v-bind="aircraft.svgParts.body" />
-              <path v-for="(p, i) in aircraft.svgParts.paths" :key="i" v-bind="p" />
-              <circle v-if="aircraft.svgParts.circle" v-bind="aircraft.svgParts.circle" />
-              <rect v-if="aircraft.svgParts.rect" v-bind="aircraft.svgParts.rect" />
-              <text v-if="aircraft.svgParts.text" v-bind="aircraft.svgParts.text">{{ aircraft.svgParts.text.content }}</text>
+          <div class="h-56 flex flex-col items-center justify-center relative" :class="category.bgClass">
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none">
+              <path v-for="(p, i) in category.paths" :key="i" v-bind="p" />
             </svg>
-            <div class="absolute top-4 right-4 px-3 py-1 text-white text-xs font-bold rounded-full" :class="aircraft.badgeClass">
-              {{ aircraft.badge }}
+            <div class="absolute top-4 right-4 px-3 py-1 text-white text-xs font-bold rounded-full" :class="category.badgeClass">
+              {{ category.badge }}
             </div>
           </div>
           <div class="p-8">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ aircraft.name }}</h3>
-            <p class="text-gray-500 mb-6">{{ aircraft.description }}</p>
-            <div class="grid grid-cols-3 gap-4 mb-6">
-              <div v-for="spec in aircraft.specs" :key="spec.label" class="text-center">
-                <div class="text-xl font-black text-blue-600">{{ spec.value }}</div>
-                <div class="text-xs text-gray-400">{{ spec.label }}</div>
-              </div>
-            </div>
-            <a href="#" class="flex items-center gap-2 text-blue-600 font-semibold hover:gap-4 transition-all text-sm">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ category.title }}</h3>
+            <p class="text-gray-500 mb-6">{{ category.description }}</p>
+            <ul class="space-y-1 mb-6">
+              <li v-for="item in category.items" :key="item" class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="w-1.5 h-1.5 bg-blue-600 rounded-full shrink-0"></span>
+                {{ item }}
+              </li>
+            </ul>
+            <router-link :to="category.link" class="flex items-center gap-2 text-blue-600 font-semibold hover:gap-4 transition-all text-sm">
               დეტალურად
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -51,76 +45,52 @@
 </template>
 
 <script setup>
-const aircrafts = [
+const categories = [
   {
-    name: 'AIR 42-600',
-    description: '48 ადგილიანი სამოქალაქო აეროპლანი რეგიონალურ რეისების ფრენებისთვის',
-    badge: 'ახალი',
+    title: 'წარმოებული თვითმფრინავები',
+    description: 'ისტორიის მანძილზე კომპანიამ 8 500-ზე მეტი სხვადასხვა ტიპის საფრენი აპარატი აწარმოა, LaGG-3-დან Su-25-მდე.',
+    badge: 'წარმოება',
     badgeClass: 'bg-blue-600',
     bgClass: 'bg-gradient-to-br from-blue-50 to-blue-100',
-    svgViewBox: '0 0 300 200',
-    svgClass: 'w-48',
-    svgParts: {
-      body: { cx: 150, cy: 100, rx: 120, ry: 20, fill: '#3b82f6', opacity: 0.8 },
-      paths: [
-        { d: 'M130 100 L160 100 L170 50 L145 55 Z', fill: '#2563eb' },
-        { d: 'M130 100 L160 100 L170 150 L145 145 Z', fill: '#2563eb' },
-        { d: 'M35 100 L50 100 L45 75 L30 78 Z', fill: '#60a5fa' },
-      ],
-      circle: { cx: 230, cy: 98, r: 8, fill: '#bfdbfe' },
-    },
-    specs: [
-      { value: '48', label: 'ადგილი' },
-      { value: '1,326', label: 'კმ რადიუსი' },
-      { value: '556', label: 'კმ/სთ' },
+    link: '/products/military/helicopters',
+    items: ['LaGG-3, La-5, Yak-3', 'Yak-15, Yak-17, Yak-23', 'MiG-15, MiG-17, MiG-21', 'Su-25, Su-25UB'],
+    paths: [
+      { d: 'M10 50 Q50 30 90 50', stroke: '#2563eb', 'stroke-width': '3', fill: 'none' },
+      { d: 'M20 50 L80 50 L85 40 L20 40 Z', fill: '#3b82f6', opacity: '0.7' },
+      { d: 'M20 50 L80 50 L85 60 L20 60 Z', fill: '#3b82f6', opacity: '0.7' },
+      { d: 'M10 50 L20 50 L18 42 L8 44 Z', fill: '#60a5fa' },
+      { d: 'M10 50 L20 50 L18 58 L8 56 Z', fill: '#60a5fa' },
     ],
   },
   {
-    name: 'AIR 72-600',
-    description: '78 ადგილიანი ფლაგმანი — ყველაზე პოპულარული სამოქალაქო აეროპლანი',
-    badge: 'ბესტსელერი',
+    title: 'შვეულმფრენების რემონტი',
+    description: 'Mi-8, Mi-17, Mi-24 და Mi-35 ტიპის შვეულმფრენების სრული ოვერჰოლი, მოდერნიზება და ტექნიკური მომსახურება.',
+    badge: 'სერვისი',
     badgeClass: 'bg-emerald-500',
-    bgClass: 'bg-gradient-to-br from-blue-100 to-blue-200',
-    svgViewBox: '0 0 300 200',
-    svgClass: 'w-56',
-    svgParts: {
-      body: { cx: 150, cy: 100, rx: 130, ry: 22, fill: '#2563eb', opacity: 0.85 },
-      paths: [
-        { d: 'M125 100 L165 100 L180 42 L140 50 Z', fill: '#1d4ed8' },
-        { d: 'M125 100 L165 100 L180 158 L140 150 Z', fill: '#1d4ed8' },
-        { d: 'M25 100 L45 100 L38 70 L18 74 Z', fill: '#3b82f6' },
-      ],
-      circle: { cx: 245, cy: 98, r: 9, fill: '#bfdbfe' },
-    },
-    specs: [
-      { value: '78', label: 'ადგილი' },
-      { value: '1,528', label: 'კმ რადიუსი' },
-      { value: '556', label: 'კმ/სთ' },
+    bgClass: 'bg-gradient-to-br from-emerald-50 to-teal-100',
+    link: '/products/military/helicopters',
+    items: ['Mi-8 / Mi-17 / Mi-171', 'Mi-24 / Mi-35', 'Mi-17 Modernization', 'Mi-24/Mi-35 Life Extension'],
+    paths: [
+      { d: 'M50 30 L50 70', stroke: '#059669', 'stroke-width': '2', fill: 'none' },
+      { d: 'M20 45 L80 45 L75 55 L25 55 Z', fill: '#10b981', opacity: '0.7' },
+      { d: 'M50 30 L30 35 L50 40 L70 35 Z', fill: '#34d399', opacity: '0.8' },
+      { d: 'M45 70 L55 70 L52 80 L48 80 Z', fill: '#6ee7b7' },
     ],
   },
   {
-    name: 'AIR 72-600F',
-    description: 'სატვირთო ვერსია — ეფექტური რეგიონალურ სატვირთო გადაზიდვებში',
-    badge: 'სატვირთო',
+    title: 'თვითმფრინავების რემონტი',
+    description: 'Su-25 და Su-25UB ტიპის საბრძოლო თვითმფრინავების სრული ოვერჰოლი, მოდერნიზება და Su-25 GE-31 პროექტი.',
+    badge: 'ოვერჰოლი',
     badgeClass: 'bg-indigo-600',
-    bgClass: 'bg-gradient-to-br from-blue-200 to-indigo-200',
-    svgViewBox: '0 0 300 200',
-    svgClass: 'w-56',
-    svgParts: {
-      body: { cx: 150, cy: 100, rx: 130, ry: 25, fill: '#1e40af', opacity: 0.85 },
-      paths: [
-        { d: 'M125 100 L165 100 L180 42 L140 50 Z', fill: '#1e3a8a' },
-        { d: 'M125 100 L165 100 L180 158 L140 150 Z', fill: '#1e3a8a' },
-        { d: 'M25 100 L45 100 L38 70 L18 74 Z', fill: '#2563eb' },
-      ],
-      circle: null,
-      rect: { x: 60, y: 88, width: 120, height: 24, rx: 4, fill: '#3b82f6', opacity: 0.3 },
-      text: { x: 120, y: 104, 'text-anchor': 'middle', fill: '#bfdbfe', 'font-size': 12, 'font-weight': 'bold', content: 'CARGO' },
-    },
-    specs: [
-      { value: '9.0', label: 'ტონა ტვირთი' },
-      { value: '1,528', label: 'კმ რადიუსი' },
-      { value: '556', label: 'კმ/სთ' },
+    bgClass: 'bg-gradient-to-br from-indigo-50 to-blue-100',
+    link: '/products/services',
+    items: ['Su-25 Overhaul', 'Su-25UB Overhaul', 'Su-25 Modernization', 'GE-31 Development'],
+    paths: [
+      { d: 'M5 50 Q50 25 95 50', stroke: '#4f46e5', 'stroke-width': '3', fill: 'none' },
+      { d: 'M15 50 L85 50 L80 43 L15 43 Z', fill: '#6366f1', opacity: '0.75' },
+      { d: 'M15 50 L85 50 L80 57 L15 57 Z', fill: '#6366f1', opacity: '0.75' },
+      { d: 'M5 50 L15 50 L12 43 L3 45 Z', fill: '#a5b4fc' },
+      { d: 'M5 50 L15 50 L12 57 L3 55 Z', fill: '#a5b4fc' },
     ],
   },
 ]
