@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
 }
+
+/* Make content images feel clickable */
+main img, section img, article img {
+    cursor: zoom-in;
+}
 body {
     margin: 0;
     padding: 0;

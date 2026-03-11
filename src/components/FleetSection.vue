@@ -14,10 +14,9 @@
           class="card-hover rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-lg reveal"
           :style="{ transitionDelay: index * 0.15 + 's' }"
         >
-          <div class="h-56 flex flex-col items-center justify-center relative" :class="category.bgClass">
-            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none">
-              <path v-for="(p, i) in category.paths" :key="i" v-bind="p" />
-            </svg>
+          <div class="h-56 relative overflow-hidden">
+            <img :src="category.image" :alt="category.title" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
             <div class="absolute top-4 right-4 px-3 py-1 text-white text-xs font-bold rounded-full" :class="category.badgeClass">
               {{ category.badge }}
             </div>
@@ -51,47 +50,27 @@ const categories = [
     description: 'ისტორიის მანძილზე კომპანიამ 8 500-ზე მეტი სხვადასხვა ტიპის საფრენი აპარატი აწარმოა, LaGG-3-დან Su-25-მდე.',
     badge: 'წარმოება',
     badgeClass: 'bg-blue-600',
-    bgClass: 'bg-gradient-to-br from-blue-50 to-blue-100',
+    image: new URL('../assets/docx-images/image27.jpeg', import.meta.url).href,
     link: '/products/military/helicopters',
     items: ['LaGG-3, La-5, Yak-3', 'Yak-15, Yak-17, Yak-23', 'MiG-15, MiG-17, MiG-21', 'Su-25, Su-25UB'],
-    paths: [
-      { d: 'M10 50 Q50 30 90 50', stroke: '#2563eb', 'stroke-width': '3', fill: 'none' },
-      { d: 'M20 50 L80 50 L85 40 L20 40 Z', fill: '#3b82f6', opacity: '0.7' },
-      { d: 'M20 50 L80 50 L85 60 L20 60 Z', fill: '#3b82f6', opacity: '0.7' },
-      { d: 'M10 50 L20 50 L18 42 L8 44 Z', fill: '#60a5fa' },
-      { d: 'M10 50 L20 50 L18 58 L8 56 Z', fill: '#60a5fa' },
-    ],
   },
   {
     title: 'შვეულმფრენების რემონტი',
     description: 'Mi-8, Mi-17, Mi-24 და Mi-35 ტიპის შვეულმფრენების სრული ოვერჰოლი, მოდერნიზება და ტექნიკური მომსახურება.',
     badge: 'სერვისი',
     badgeClass: 'bg-emerald-500',
-    bgClass: 'bg-gradient-to-br from-emerald-50 to-teal-100',
+    image: new URL('../assets/docx-images/image25.jpeg', import.meta.url).href,
     link: '/products/military/helicopters',
     items: ['Mi-8 / Mi-17 / Mi-171', 'Mi-24 / Mi-35', 'Mi-17 Modernization', 'Mi-24/Mi-35 Life Extension'],
-    paths: [
-      { d: 'M50 30 L50 70', stroke: '#059669', 'stroke-width': '2', fill: 'none' },
-      { d: 'M20 45 L80 45 L75 55 L25 55 Z', fill: '#10b981', opacity: '0.7' },
-      { d: 'M50 30 L30 35 L50 40 L70 35 Z', fill: '#34d399', opacity: '0.8' },
-      { d: 'M45 70 L55 70 L52 80 L48 80 Z', fill: '#6ee7b7' },
-    ],
   },
   {
     title: 'თვითმფრინავების რემონტი',
     description: 'Su-25 და Su-25UB ტიპის საბრძოლო თვითმფრინავების სრული ოვერჰოლი, მოდერნიზება და Su-25 GE-31 პროექტი.',
     badge: 'ოვერჰოლი',
     badgeClass: 'bg-indigo-600',
-    bgClass: 'bg-gradient-to-br from-indigo-50 to-blue-100',
+    image: new URL('../assets/docx-images/image26.jpeg', import.meta.url).href,
     link: '/products/services',
     items: ['Su-25 Overhaul', 'Su-25UB Overhaul', 'Su-25 Modernization', 'GE-31 Development'],
-    paths: [
-      { d: 'M5 50 Q50 25 95 50', stroke: '#4f46e5', 'stroke-width': '3', fill: 'none' },
-      { d: 'M15 50 L85 50 L80 43 L15 43 Z', fill: '#6366f1', opacity: '0.75' },
-      { d: 'M15 50 L85 50 L80 57 L15 57 Z', fill: '#6366f1', opacity: '0.75' },
-      { d: 'M5 50 L15 50 L12 43 L3 45 Z', fill: '#a5b4fc' },
-      { d: 'M5 50 L15 50 L12 57 L3 55 Z', fill: '#a5b4fc' },
-    ],
   },
 ]
 </script>

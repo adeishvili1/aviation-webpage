@@ -2,25 +2,6 @@
   <section id="innovation" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
-      <!-- ELITE-Jet technical drawings gallery -->
-      <div class="mb-16 reveal">
-        <h3 class="text-xl font-bold text-gray-700 mb-4 uppercase tracking-widest text-sm">ELITE-Jet — Technical Drawings & Layouts</h3>
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image5.jpeg" alt="ELITE-Jet technical blueprint" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">Technical Blueprint</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image6.jpeg" alt="ELITE-Jet 6-seater interior layout" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">6-Seater Interior Layout</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image7.jpeg" alt="ELITE-Jet 9-seater interior layout" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">9-Seater Interior Layout</p>
-          </div>
-        </div>
-      </div>
-
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Content -->
         <div class="reveal">
@@ -49,26 +30,52 @@
         </div>
 
         <!-- Right: Aircraft Images -->
-        <div class="reveal relative space-y-4" style="transition-delay:0.2s">
+        <div class="reveal relative" style="transition-delay:0.2s">
           <!-- ELITE-Jet main photo -->
-          <div class="relative rounded-3xl overflow-hidden">
-            <img src="../assets/docx-images/image3.jpeg" alt="ELITE-Jet business aircraft" class="w-full object-cover rounded-3xl" style="max-height:300px;" />
+          <div class="relative rounded-3xl overflow-hidden mb-4">
+            <img src="../assets/docx-images/image3.jpeg" alt="ELITE-Jet business aircraft" class="w-full object-cover rounded-3xl" style="height:260px;" />
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 rounded-b-3xl">
               <p class="text-white font-semibold text-sm">ELITE-Jet — Business Aviation Concept</p>
             </div>
           </div>
-          <!-- ELITE-Jet labeled diagram -->
-          <div class="rounded-2xl overflow-hidden bg-white p-3">
-            <img src="../assets/docx-images/image9.png" alt="ELITE-Jet labeled components diagram" class="w-full object-contain" />
-          </div>
-          <!-- GE-31 cockpit avionics -->
-          <div class="rounded-2xl overflow-hidden">
-            <img src="../assets/docx-images/image8.jpeg" alt="GE-31 BORA integrated avionics cockpit" class="w-full object-cover" style="max-height:200px;" />
-            <div class="bg-brand-900/80 p-3 text-center">
-              <p class="text-blue-300 text-xs font-medium">GE-31 — Integrated Avionics System (BORA)</p>
+          <!-- Bottom row: diagram + cockpit side by side -->
+          <div class="grid grid-cols-2 gap-3">
+            <!-- ELITE-Jet labeled diagram -->
+            <div class="rounded-2xl overflow-hidden bg-white border border-gray-100 p-2 flex flex-col items-center justify-center">
+              <img src="../assets/docx-images/image9.png" alt="ELITE-Jet labeled components diagram" class="w-full object-contain" style="max-height:180px;" />
+              <p class="text-gray-400 text-xs text-center mt-1">Component Diagram</p>
+            </div>
+            <!-- GE-31 cockpit avionics -->
+            <div class="rounded-2xl overflow-hidden flex flex-col">
+              <img src="../assets/docx-images/image8.jpeg" alt="GE-31 BORA integrated avionics cockpit" class="w-full object-cover flex-1" style="height:150px;" />
+              <div class="bg-slate-800 p-2 text-center">
+                <p class="text-blue-300 text-xs font-medium">GE-31 Avionics (BORA)</p>
+              </div>
             </div>
           </div>
           <div class="absolute -top-4 -right-4 w-24 h-24 opacity-20" style="background-image: radial-gradient(#3b82f6 1.5px, transparent 1.5px); background-size: 12px 12px;"></div>
+        </div>
+      </div>
+
+      <!-- ELITE-Jet technical drawings gallery — below main content -->
+      <div class="mt-16 reveal">
+        <h3 class="text-sm font-bold text-gray-700 mb-4 uppercase tracking-widest">
+          ELITE-Jet — ტექნიკური ნახაზები და განლაგება
+          <span class="text-gray-400 font-normal normal-case tracking-normal ml-2">/ Technical Drawings & Layouts</span>
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image5.jpeg" alt="ELITE-Jet technical blueprint" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">ტექნიკური ბლუპრინტი / Technical Blueprint</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image6.jpeg" alt="ELITE-Jet 6-seater interior layout" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">6-ადგილიანი სალონის განლაგება / 6-Seater Interior Layout</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <img src="../assets/docx-images/image7.jpeg" alt="ELITE-Jet 9-seater interior layout" class="w-full object-contain p-2" />
+            <p class="text-gray-500 text-xs text-center pb-2">9-ადგილიანი სალონის განლაგება / 9-Seater Interior Layout</p>
+          </div>
         </div>
       </div>
     </div>
