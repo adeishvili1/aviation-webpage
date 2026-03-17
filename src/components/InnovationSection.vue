@@ -59,22 +59,40 @@
 
       <!-- ELITE-Jet technical drawings gallery — below main content -->
       <div class="mt-16 reveal">
-        <h3 class="text-sm font-bold text-gray-700 mb-4 uppercase tracking-widest">
+        <h3 class="text-sm font-bold text-gray-700 mb-6 uppercase tracking-widest">
           ELITE-Jet — ტექნიკური ნახაზები და განლაგება
-          <span class="text-gray-400 font-normal normal-case tracking-normal ml-2">/ Technical Drawings & Layouts</span>
         </h3>
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image5.jpeg" alt="ELITE-Jet technical blueprint" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">ტექნიკური ბლუპრინტი / Technical Blueprint</p>
+
+        <!-- Part 1: Full-width blueprint -->
+        <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white mb-4 group cursor-pointer" style="max-height:320px;">
+          <img src="../assets/docx-images/image5.jpeg" alt="ტექნიკური ბლუპრინტი"
+               class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]" style="max-height:320px;" />
+          <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+              <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">ტექნიკური ბლუპრინტი</p>
+            </div>
           </div>
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image6.jpeg" alt="ELITE-Jet 6-seater interior layout" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">6-ადგილიანი სალონის განლაგება / 6-Seater Interior Layout</p>
+        </div>
+
+        <!-- Part 2: Interior layouts side by side -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
+            <img src="../assets/docx-images/image6.jpeg" alt="6-ადგილიანი სალონის განლაგება"
+                 class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
+            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">6-ადგილიანი სალონის განლაგება</p>
+              </div>
+            </div>
           </div>
-          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
-            <img src="../assets/docx-images/image7.jpeg" alt="ELITE-Jet 9-seater interior layout" class="w-full object-contain p-2" />
-            <p class="text-gray-500 text-xs text-center pb-2">9-ადგილიანი სალონის განლაგება / 9-Seater Interior Layout</p>
+          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
+            <img src="../assets/docx-images/image7.jpeg" alt="9-ადგილიანი სალონის განლაგება"
+                 class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
+            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">9-ადგილიანი სალონის განლაგება</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

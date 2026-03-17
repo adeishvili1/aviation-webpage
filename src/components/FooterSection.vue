@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-brand-950 border-t border-blue-900/50">
-    <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="w-full px-10 py-16">
       <div class="grid md:grid-cols-4 gap-12">
         <!-- Brand -->
         <div class="md:col-span-1">
