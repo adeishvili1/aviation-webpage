@@ -40,9 +40,7 @@ const routes = [
   // Legacy redirect
   { path: '/director', redirect: '/about/management' },
 
-  // Admin (hidden from nav)
-  { path: '/admin', component: () => import('../pages/admin/index.vue') },
-  { path: '/admin/management', component: () => import('../pages/admin/management.vue') },
+
 ]
 
 const router = createRouter({
