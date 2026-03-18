@@ -42,7 +42,7 @@
               <circle
                 :cx="p.cx" :cy="p.cy" r="7"
                 fill="#3b82f6" opacity="0.3"
-                class="pulse-ring"
+                class="map-pulse"
                 :style="{ animationDelay: p.delay }"
               />
               <circle
@@ -140,36 +140,3 @@ function onLeave() {
   hovered.value = null
 }
 </script>
-
-<style scoped>
-.default-country {
-  fill: #112240;
-  stroke: #1a3a6b;
-  stroke-width: 0.3px;
-}
-.partner-country {
-  fill: #1d4ed8;
-  stroke: #3b82f6;
-  stroke-width: 0.5px;
-  filter: drop-shadow(0 0 4px rgba(59,130,246,0.6));
-  cursor: pointer;
-}
-.partner-country:hover {
-  fill: #2563eb;
-  filter: drop-shadow(0 0 8px rgba(59,130,246,0.9));
-}
-
-.pulse-ring {
-  animation: pulse 2.4s ease-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-@keyframes pulse {
-  0%   { transform: scale(1);   opacity: 0.4; }
-  70%  { transform: scale(3.5); opacity: 0; }
-  100% { transform: scale(1);   opacity: 0; }
-}
-
-.fade-enter-active, .fade-leave-active { transition: opacity 0.15s; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
-</style>

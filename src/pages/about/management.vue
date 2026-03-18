@@ -151,11 +151,3 @@ const members = computed(() => store.members)
 const selectedId = ref(members.value[0]?.id ?? null)
 const selected = computed(() => members.value.find(m => m.id === selectedId.value) ?? members.value[0])
 </script>
-
-<style scoped>
-.profile-enter-active, .profile-leave-active {
-  transition: opacity 0.2s, transform 0.2s;
-}
-.profile-enter-from { opacity: 0; transform: translateY(12px); }
-.profile-leave-to   { opacity: 0; transform: translateY(-8px); }
-</style>

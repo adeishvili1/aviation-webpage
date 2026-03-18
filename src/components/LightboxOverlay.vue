@@ -33,14 +33,3 @@ import { useLightbox } from '../composables/useLightbox'
 
 const { isOpen, currentSrc, currentAlt, close } = useLightbox()
 </script>
-
-<style scoped>
-.lightbox-enter-active,
-.lightbox-leave-active {
-  transition: opacity 0.2s ease;
-}
-.lightbox-enter-from,
-.lightbox-leave-to {
-  opacity: 0;
-}
-</style>
