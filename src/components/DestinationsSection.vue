@@ -2,9 +2,9 @@
   <section id="partners" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal">
-        <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">პარტნიორები</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">ჩვენი <span class="text-blue-600">პარტნიორები</span></h2>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">10-ზე მეტ ქვეყანაში საერთაშორისო პარტნიორობა</p>
+        <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">{{ $t('partners.label') }}</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">{{ $t('partners.title1') }} <span class="text-blue-600">{{ $t('partners.title2') }}</span></h2>
+        <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">{{ $t('partners.desc') }}</p>
       </div>
     </div>
 
@@ -63,7 +63,7 @@
               :style="{ left: tooltipLeft, top: tooltipTop, marginTop: '-10px' }"
             >
               <span class="text-lg leading-none">{{ hovered.flag }}</span>
-              <span class="font-bold text-gray-900 text-sm whitespace-nowrap">{{ hovered.name }}</span>
+              <span class="font-bold text-gray-900 text-sm whitespace-nowrap">{{ $t(hovered.nameKey) }}</span>
               <div class="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full w-0 h-0"
                    style="border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid white;"/>
             </div>
@@ -79,7 +79,7 @@
             class="flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full hover:bg-blue-600 hover:border-blue-600 group transition-all cursor-default"
           >
             <span class="text-lg leading-none">{{ p.flag }}</span>
-            <span class="font-semibold text-blue-900 group-hover:text-white text-sm transition-colors">{{ p.name }}</span>
+            <span class="font-semibold text-blue-900 group-hover:text-white text-sm transition-colors">{{ $t(p.nameKey) }}</span>
           </div>
         </div>
 
@@ -88,7 +88,7 @@
             to="/partners"
             class="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transition-all hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1"
           >
-            ყველა პარტნიორი
+            {{ $t('partners.all') }}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
@@ -105,18 +105,18 @@ import worldMapData from '@svg-maps/world'
 const worldMap = worldMapData
 
 // Graticule lines
-const graticuleH = [111, 222, 333, 444, 555]          // every ~30° lat
-const graticuleV = [84, 168, 252, 336, 505, 589, 673, 757, 841, 925]  // every ~30° lon
+const graticuleH = [111, 222, 333, 444, 555]
+const graticuleV = [84, 168, 252, 336, 505, 589, 673, 757, 841, 925]
 
 const partners = [
-  { id: 'tr', name: 'თურქეთი',     flag: '🇹🇷', cx: 585, cy: 342, delay: '0s'    },
-  { id: 'il', name: 'ისრაელი',     flag: '🇮🇱', cx: 577, cy: 368, delay: '0.3s'  },
-  { id: 'pl', name: 'პოლონეთი',    flag: '🇵🇱', cx: 538, cy: 285, delay: '0.6s'  },
-  { id: 'ua', name: 'უკრაინა',     flag: '🇺🇦', cx: 586, cy: 316, delay: '0.9s'  },
-  { id: 'cz', name: 'ჩეხეთი',      flag: '🇨🇿', cx: 522, cy: 298, delay: '1.2s'  },
-  { id: 'bg', name: 'ბულგარეთი',   flag: '🇧🇬', cx: 560, cy: 330, delay: '1.5s'  },
-  { id: 'kz', name: 'ყაზახეთი',    flag: '🇰🇿', cx: 700, cy: 308, delay: '1.8s'  },
-  { id: 'az', name: 'აზერბაიჯანი', flag: '🇦🇿', cx: 615, cy: 336, delay: '2.1s'  },
+  { id: 'tr', nameKey: 'partners.turkey',     flag: '🇹🇷', cx: 585, cy: 342, delay: '0s'    },
+  { id: 'il', nameKey: 'partners.israel',     flag: '🇮🇱', cx: 577, cy: 368, delay: '0.3s'  },
+  { id: 'pl', nameKey: 'partners.poland',     flag: '🇵🇱', cx: 538, cy: 285, delay: '0.6s'  },
+  { id: 'ua', nameKey: 'partners.ukraine',    flag: '🇺🇦', cx: 586, cy: 316, delay: '0.9s'  },
+  { id: 'cz', nameKey: 'partners.czech',      flag: '🇨🇿', cx: 522, cy: 298, delay: '1.2s'  },
+  { id: 'bg', nameKey: 'partners.bulgaria',   flag: '🇧🇬', cx: 560, cy: 330, delay: '1.5s'  },
+  { id: 'kz', nameKey: 'partners.kazakhstan', flag: '🇰🇿', cx: 700, cy: 308, delay: '1.8s'  },
+  { id: 'az', nameKey: 'partners.azerbaijan', flag: '🇦🇿', cx: 615, cy: 336, delay: '2.1s'  },
 ]
 
 const partnerIds = computed(() => new Set(partners.map(p => p.id)))

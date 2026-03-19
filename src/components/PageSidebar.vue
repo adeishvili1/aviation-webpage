@@ -20,7 +20,7 @@
               <svg class="w-5 h-5 mr-3 shrink-0" :class="route.path === item.to ? 'text-blue-400' : 'text-blue-500/50'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="item.icon"/>
               </svg>
-              <span>{{ item.label }}</span>
+              <span>{{ item.key ? $t(item.key) : item.label }}</span>
             </router-link>
           </li>
         </ul>

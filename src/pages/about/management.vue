@@ -1,6 +1,6 @@
 <template>
   <div class="bg-brand-950 min-h-screen">
-    <PageHero title="ხელმძღვანელობა" subtitle="სს თბილავიამშენის ხელმძღვანელობა" />
+    <PageHero :title="$t('management.title')" :subtitle="$t('management.subtitle')" />
 
     <div class="max-w-7xl mx-auto px-6 pb-20 -mt-10 relative z-10">
       <div class="flex flex-col lg:flex-row gap-8">
@@ -42,7 +42,7 @@
                     <svg class="w-16 h-16 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                     </svg>
-                    <span class="text-blue-500/40 text-xs">სურათი</span>
+                    <span class="text-blue-500/40 text-xs">{{ $t('management.photo') }}</span>
                   </div>
 
                   <div class="flex-1">
@@ -52,15 +52,15 @@
                     </div>
                     <div class="grid sm:grid-cols-2 gap-3">
                       <div v-if="selected.dob" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">დაბადების თარიღი</div>
+                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.dob') }}</div>
                         <div class="text-white text-sm font-medium">{{ selected.dob }}</div>
                       </div>
                       <div v-if="selected.languages?.length" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">ენები</div>
+                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.languages') }}</div>
                         <div class="text-white text-sm font-medium">{{ selected.languages.join(', ') }}</div>
                       </div>
                       <div v-if="selected.specialty" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20 sm:col-span-2">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">სპეციალობა</div>
+                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.specialty') }}</div>
                         <div class="text-white text-sm font-medium">{{ selected.specialty }}</div>
                       </div>
                     </div>
@@ -71,7 +71,7 @@
               <!-- Career timeline -->
               <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
                 <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">სამუშაო გამოცდილება</h3>
+                  <h3 class="text-xl font-bold text-white">{{ $t('management.experience') }}</h3>
                 </div>
                 <div v-for="(group, gi) in selected.experience" :key="gi" class="mb-6 last:mb-0">
                   <div class="text-blue-400 font-bold text-sm mb-3 uppercase tracking-widest">{{ group.company }}</div>
@@ -91,7 +91,7 @@
               <!-- Education -->
               <div v-if="selected.education?.length" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
                 <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">განათლება</h3>
+                  <h3 class="text-xl font-bold text-white">{{ $t('management.education') }}</h3>
                 </div>
                 <div class="space-y-3">
                   <div v-for="(edu, i) in selected.education" :key="i" class="flex gap-4 p-4 bg-blue-500/8 rounded-lg border border-blue-500/10">
@@ -113,7 +113,7 @@
               <!-- Awards -->
               <div v-if="selected.awards?.length" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
                 <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">სახელმწიფო ჯილდოები</h3>
+                  <h3 class="text-xl font-bold text-white">{{ $t('management.awards') }}</h3>
                 </div>
                 <div class="space-y-3">
                   <div v-for="(award, i) in selected.awards" :key="i" class="flex gap-4 p-4 bg-yellow-500/5 rounded-lg border border-yellow-500/15">
@@ -131,7 +131,7 @@
 
         </main>
 
-        <PageSidebar title="ჩვენს შესახებ" :links="sidebarLinks" />
+        <PageSidebar :title="$t('nav.about')" :links="sidebarLinks" />
       </div>
     </div>
   </div>
@@ -139,10 +139,13 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import PageHero from '../../components/PageHero.vue'
 import PageSidebar from '../../components/PageSidebar.vue'
 import { getSidebarLinks } from '../../data/navigation.js'
 import { useManagementStore } from '../../stores/management.js'
+
+const { t: $t } = useI18n()
 
 const sidebarLinks = getSidebarLinks('about')
 const store = useManagementStore()

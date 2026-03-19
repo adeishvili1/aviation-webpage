@@ -5,25 +5,24 @@
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Content -->
         <div class="reveal">
-          <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">ინოვაცია</span>
+          <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">{{ $t('innovation.label') }}</span>
           <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900 leading-tight">
-            ავიაციის <span class="text-blue-600">კონცეფციები</span>
+            {{ $t('innovation.title1') }} <span class="text-blue-600">{{ $t('innovation.title2') }}</span>
           </h2>
           <p class="text-gray-500 mt-6 text-lg leading-relaxed">
-            სს „თბილავიამშენი" ავიაციის სამომავლო კონცეფციებს ავითარებს — Business Jet კლასის
-            საფრენი აპარატებიდან, თანამედროვე კომპოზიტური ტექნოლოგიებით შექმნილ ELITE-Jet-მდე.
+            {{ $t('innovation.desc') }}
           </p>
 
           <div class="mt-10 space-y-6">
-            <div v-for="feature in features" :key="feature.title" class="flex gap-5 group">
+            <div v-for="feature in features" :key="feature.titleKey" class="flex gap-5 group">
               <div class="shrink-0 w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
                 <svg class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="feature.icon"/>
                 </svg>
               </div>
               <div>
-                <h4 class="font-bold text-gray-900 text-lg">{{ feature.title }}</h4>
-                <p class="text-gray-500 mt-1">{{ feature.desc }}</p>
+                <h4 class="font-bold text-gray-900 text-lg">{{ $t(feature.titleKey) }}</h4>
+                <p class="text-gray-500 mt-1">{{ $t(feature.descKey) }}</p>
               </div>
             </div>
           </div>
@@ -60,16 +59,16 @@
       <!-- ELITE-Jet technical drawings gallery — below main content -->
       <div class="mt-16 reveal">
         <h3 class="text-sm font-bold text-gray-700 mb-6 uppercase tracking-widest">
-          ELITE-Jet — ტექნიკური ნახაზები და განლაგება
+          {{ $t('innovation.drawings_title') }}
         </h3>
 
         <!-- Part 1: Full-width blueprint -->
         <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white mb-4 group cursor-pointer" style="max-height:320px;">
-          <img src="../assets/docx-images/image5.jpeg" alt="ტექნიკური ბლუპრინტი"
+          <img src="../assets/docx-images/image5.jpeg" :alt="$t('innovation.blueprint')"
                class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]" style="max-height:320px;" />
           <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
-              <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">ტექნიკური ბლუპრინტი</p>
+              <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.blueprint') }}</p>
             </div>
           </div>
         </div>
@@ -77,20 +76,20 @@
         <!-- Part 2: Interior layouts side by side -->
         <div class="grid md:grid-cols-2 gap-4">
           <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
-            <img src="../assets/docx-images/image6.jpeg" alt="6-ადგილიანი სალონის განლაგება"
+            <img src="../assets/docx-images/image6.jpeg" :alt="$t('innovation.layout6')"
                  class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
             <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
-                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">6-ადგილიანი სალონის განლაგება</p>
+                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.layout6') }}</p>
               </div>
             </div>
           </div>
           <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
-            <img src="../assets/docx-images/image7.jpeg" alt="9-ადგილიანი სალონის განლაგება"
+            <img src="../assets/docx-images/image7.jpeg" :alt="$t('innovation.layout9')"
                  class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
             <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
-                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">9-ადგილიანი სალონის განლაგება</p>
+                <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.layout9') }}</p>
               </div>
             </div>
           </div>
@@ -103,18 +102,18 @@
 <script setup>
 const features = [
   {
-    title: 'ELITE-Jet (6 & 9 seater)',
-    desc: '6-ადგილიანი და 9-ადგილიანი ELITE-Jet NG — შექმნილია კომპოზიტური მასალებით თანამედროვე ტექნოლოგიებით. საოფისე და გართობის სისტემები, Sat com, DVD/CD, საჰაერო შოუ სისტემა.',
+    titleKey: 'innovation.feat1_title',
+    descKey: 'innovation.feat1_desc',
     icon: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
   },
   {
-    title: 'GE-31 Attack Aircraft',
-    desc: 'ახალი საიერიშო თვითმფრინავი GE-31 — Su-25 ტიპის მოდიფიკაცია დასავლური წარმოების ახალი ავიონიკით, ძრავებით, სარადიო-ელექტრონული და ფრენ-ნავიგაციური სისტემებით.',
+    titleKey: 'innovation.feat2_title',
+    descKey: 'innovation.feat2_desc',
     icon: 'M13 10V3L4 14h7v7l9-11h-7z',
   },
   {
-    title: 'Business Class Aircraft',
-    desc: 'Business Class კლასის საფრენი აპარატები — სრული გალი, გართობის სისტემა, კლუბური სავარძლები და ყველა თანამედროვე მგზავრის კომფორტის ელემენტი.',
+    titleKey: 'innovation.feat3_title',
+    descKey: 'innovation.feat3_desc',
     icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
   },
 ]
