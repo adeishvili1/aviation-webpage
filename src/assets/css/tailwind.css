@@ -139,7 +139,7 @@ html { scroll-behavior: smooth; }
   100% { left: 100%; }
 }
 
-/* Plane fly animation */
+/* Plane fly animation (hero trails — kept for hero section) */
 .plane-fly {
   animation: flyAcross 15s linear infinite;
 }
@@ -148,6 +148,43 @@ html { scroll-behavior: smooth; }
   10% { opacity: 0.6; }
   90% { opacity: 0.6; }
   100% { transform: translate(calc(100vw + 100px), -80px) rotate(-5deg); opacity: 0; }
+}
+
+/* Plane strip — straight horizontal lanes */
+.plane-lane {
+  left: 0;
+  animation: flyLane linear infinite;
+  animation-fill-mode: backwards;
+}
+@keyframes flyLane {
+  0%   { transform: translate3d(-300px, 0, 0); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translate3d(calc(100vw + 100px), 0, 0); opacity: 0; }
+}
+
+/* Organic float — simulates atmospheric pressure */
+.plane-bob {
+  animation: floatY 4s ease-in-out infinite alternate;
+}
+@keyframes floatY {
+  0%   { transform: translateY(-2px); }
+  100% { transform: translateY(2px); }
+}
+
+/* Contrail container — mask fades trail at the back */
+.contrails-container {
+  height: 14px;
+  mask-image: linear-gradient(to right, transparent 0%, black 80%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 80%);
+}
+
+/* Individual vapor trail line */
+.vapor-trail {
+  height: 2px;
+  border-radius: 4px;
+  filter: blur(1.5px);
+  transform: scaleY(1.5);
 }
 
 /* Reveal animation */

@@ -15,6 +15,7 @@
         </div>
         <!-- Search + Language -->
         <div class="flex items-center gap-4">
+          <!-- Search — hidden for now
           <div class="relative">
             <input
               type="text"
@@ -25,6 +26,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
           </div>
+          -->
           <div class="flex items-center gap-1 text-sm">
             <button @click="setLocale('ka')" class="px-2 py-0.5 rounded transition-colors" :class="locale === 'ka' ? 'text-white font-bold bg-white/10' : 'text-white/50 hover:text-white'">ქარ</button>
             <span class="text-white/20">|</span>
