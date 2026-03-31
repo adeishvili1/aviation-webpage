@@ -38,15 +38,10 @@
     <div class="plane-trail" style="top:50%;animation-delay:3s"></div>
     <div class="plane-trail" style="top:70%;animation-delay:6s"></div>
 
-    <div class="max-w-7xl mx-auto px-6 pt-40 pb-32 relative z-20">
+    <div class="max-w-7xl mx-auto px-6 pt-40 pb-32 relative z-20" data-parallax="0.12">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Text -->
         <div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 mb-8">
-            <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-            <span class="text-blue-300 text-sm font-medium">{{ $t('hero.badge') }}</span>
-          </div>
-
           <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-3">
             {{ $t('hero.title1') }} <span class="gradient-text">{{ $t('hero.title2') }}</span>
           </h1>

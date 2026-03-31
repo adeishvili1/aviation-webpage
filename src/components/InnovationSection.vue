@@ -1,6 +1,6 @@
 <template>
   <section id="innovation" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2" data-parallax="0.2"></div>
     <div class="max-w-7xl mx-auto px-6 relative">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Content -->
@@ -33,8 +33,8 @@
           <!-- ELITE-Jet main photo -->
           <div class="relative rounded-3xl overflow-hidden mb-4">
             <img src="../assets/docx-images/image3.jpeg" alt="ELITE-Jet business aircraft" class="w-full object-cover rounded-3xl" style="height:260px;" />
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 rounded-b-3xl">
-              <p class="text-white font-semibold text-sm">ELITE-Jet — Business Aviation Concept</p>
+            <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-4 rounded-b-3xl">
+              <p class="text-white font-semibold text-sm">ELITE-Jet — ბიზნეს-ავიაციის კონცეფცია</p>
             </div>
           </div>
           <!-- Bottom row: diagram + cockpit side by side -->
@@ -42,13 +42,13 @@
             <!-- ELITE-Jet labeled diagram -->
             <div class="rounded-2xl overflow-hidden bg-white border border-gray-100 p-2 flex flex-col items-center justify-center">
               <img src="../assets/docx-images/image9.png" alt="ELITE-Jet labeled components diagram" class="w-full object-contain" style="max-height:180px;" />
-              <p class="text-gray-400 text-xs text-center mt-1">Component Diagram</p>
+              <p class="text-gray-400 text-xs text-center mt-1">კომპონენტების სქემა</p>
             </div>
             <!-- GE-31 cockpit avionics -->
             <div class="rounded-2xl overflow-hidden flex flex-col">
               <img src="../assets/docx-images/image8.jpeg" alt="GE-31 BORA integrated avionics cockpit" class="w-full object-cover flex-1" style="height:150px;" />
               <div class="bg-slate-800 p-2 text-center">
-                <p class="text-blue-300 text-xs font-medium">GE-31 Avionics (BORA)</p>
+                <p class="text-blue-300 text-xs font-medium">GE-31 ავიონიკა (BORA)</p>
               </div>
             </div>
           </div>
@@ -63,11 +63,11 @@
         </h3>
 
         <!-- Part 1: Full-width blueprint -->
-        <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white mb-4 group cursor-pointer" style="max-height:320px;">
+        <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white mb-4 group" style="max-height:320px;">
           <img src="../assets/docx-images/image5.jpeg" :alt="$t('innovation.blueprint')"
-               class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]" style="max-height:320px;" />
-          <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+               class="w-full h-full object-contain p-2" style="max-height:320px;" />
+          <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div class="w-full bg-linear-to-t from-blue-900/70 to-transparent p-4">
               <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.blueprint') }}</p>
             </div>
           </div>
@@ -75,20 +75,20 @@
 
         <!-- Part 2: Interior layouts side by side -->
         <div class="grid md:grid-cols-2 gap-4">
-          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
+          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group" style="max-height:240px;">
             <img src="../assets/docx-images/image6.jpeg" :alt="$t('innovation.layout6')"
-                 class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
-            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+                 class="w-full h-full object-contain p-2" style="max-height:240px;" />
+            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div class="w-full bg-linear-to-t from-blue-900/70 to-transparent p-4">
                 <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.layout6') }}</p>
               </div>
             </div>
           </div>
-          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group cursor-pointer" style="max-height:240px;">
+          <div class="relative rounded-2xl overflow-hidden border border-gray-200 bg-white group" style="max-height:240px;">
             <img src="../assets/docx-images/image7.jpeg" :alt="$t('innovation.layout9')"
-                 class="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.05]" style="max-height:240px;" />
-            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="w-full bg-gradient-to-t from-blue-900/70 to-transparent p-4">
+                 class="w-full h-full object-contain p-2" style="max-height:240px;" />
+            <div class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div class="w-full bg-linear-to-t from-blue-900/70 to-transparent p-4">
                 <p class="text-white text-sm font-semibold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{{ $t('innovation.layout9') }}</p>
               </div>
             </div>

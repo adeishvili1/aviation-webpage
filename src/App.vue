@@ -6,22 +6,24 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import FooterSection from './components/FooterSection.vue'
 import LightboxOverlay from './components/LightboxOverlay.vue'
-import { useLightbox } from './composables/useLightbox'
+import { useParallax } from './composables/useParallax'
 
-const { open } = useLightbox()
+useParallax()
 
-function handleImageClick(e) {
-  const img = e.target.closest('img')
-  if (!img) return
-  if (img.closest('nav') || img.closest('footer')) return
-  if (img.naturalWidth < 100 || img.naturalHeight < 100) return
-  open(img.src, img.alt)
-}
-
-onMounted(() => document.addEventListener('click', handleImageClick))
-onUnmounted(() => document.removeEventListener('click', handleImageClick))
+// Re-trigger parallax on route change so new page elements initialize correctly
+const route = useRoute()
+watch(route, () => {
+  requestAnimationFrame(() => {
+    const scrollY = window.scrollY
+    document.querySelectorAll('[data-parallax]').forEach((el) => {
+      const speed = parseFloat(el.dataset.parallax) || 0.3
+      el.style.transform = `translateY(${scrollY * speed}px)`
+    })
+  })
+})
 </script>

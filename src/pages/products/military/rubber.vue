@@ -8,8 +8,8 @@
     <!-- Soft Fuel Tanks -->
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
       <div class="border-l-4 border-blue-400 pl-6 mb-6">
-        <h3 class="text-2xl font-bold text-white">Soft Fuel Tanks</h3>
-        <p class="text-blue-200/60 text-sm mt-1">TAM is Manufacturing Soft Fuel Tanks</p>
+        <h3 class="text-2xl font-bold text-white">რბილი საწვავის ავზები</h3>
+        <p class="text-blue-200/60 text-sm mt-1">TAM აწარმოებს რბილ საწვავის ავზებს</p>
       </div>
 
       <!-- Fuel tank photos -->
@@ -40,7 +40,7 @@
     <!-- Rubber Products -->
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
       <div class="border-l-4 border-blue-400 pl-6 mb-6">
-        <h3 class="text-2xl font-bold text-white">Rubber Products</h3>
+        <h3 class="text-2xl font-bold text-white">რეზინტექნიკური პროდუქცია</h3>
       </div>
 
       <!-- Rubber factory photos -->
@@ -54,8 +54,8 @@
       </div>
 
       <p class="text-blue-200/80 leading-relaxed mb-6">
-        JSC TAM Tbilisi Aircraft Manufacturing produces a wide range of rubber and rubber-technical
-        products for aviation applications.
+        სს TAM „თბილისის თვითმფრინავების საწარმო" აწარმოებს საავიაციო დანიშნულების რეზინისა და
+        რეზინტექნიკური პროდუქციის ფართო სპექტრს.
       </p>
       <div class="grid sm:grid-cols-2 gap-3">
         <div v-for="prod in rubberProducts" :key="prod" class="flex items-center gap-3 p-3 bg-blue-500/10 rounded-lg border border-blue-500/15">
@@ -64,7 +64,7 @@
         </div>
       </div>
       <p class="text-blue-200/60 text-sm mt-4 italic">
-        ...and other elastomeric components intended for helicopters and fixed-wing aircraft.
+        ...და სხვა ელასტომერული კომპონენტები, განკუთვნილი შვეულმფრენებისა და ფიქსირებული ფრთის საფრენი აპარატებისთვის.
       </p>
     </div>
   </SectionLayout>
@@ -79,8 +79,8 @@ const sidebarLinks = getSidebarLinks('products')
 const fuelTankAircraft = ['MiG-21', 'SU-25', 'Mi-8, Mi-17, Mi-171', 'Mi-24 and Mi-35', 'SU-22']
 
 const rubberProducts = [
-  'Diaphragms', 'O-rings', 'Gaskets', 'Seals', 'Bushings',
-  'Protective boots', 'Hoses', 'Sealing rings', 'Rubber membranes',
-  'Anti-vibration mounts', 'Fuel and oil system seals',
+  'დიაფრაგმები', 'O-რგოლები', 'გასეტები', 'საგმანები', 'სახელოსნო ყდები',
+  'დამცავი ბრუნები', 'შლანგები', 'სამაგრი რგოლები', 'რეზინის მემბრანები',
+  'ანტივიბრაციული სამაგრები', 'საწვავისა და ზეთის სისტემის საგმანები',
 ]
 </script>

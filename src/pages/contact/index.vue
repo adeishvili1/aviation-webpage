@@ -15,7 +15,7 @@
         ></iframe>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-8">
+      <div class="grid gap-8">
         <!-- Contact Info -->
         <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
           <div class="border-l-4 border-blue-400 pl-6 mb-6">
@@ -62,44 +62,6 @@
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-          <div class="border-l-4 border-blue-400 pl-6 mb-6">
-            <h3 class="text-2xl font-bold text-white">მოგვწერეთ</h3>
-          </div>
-
-          <div class="space-y-4">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-blue-300/80 mb-2">სახელი</label>
-                <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="სახელი">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-blue-300/80 mb-2">გვარი</label>
-                <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="გვარი">
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-blue-300/80 mb-2">ელ. ფოსტა</label>
-              <input type="email" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="email@example.com">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-blue-300/80 mb-2">ტელეფონი</label>
-              <input type="tel" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="+995 XXX XX XX XX">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-blue-300/80 mb-2">Subject</label>
-              <input type="text" disabled class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30" placeholder="თემა">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-blue-300/80 mb-2">შეტყობინება</label>
-              <textarea disabled rows="4" class="w-full bg-white/5 border border-blue-500/20 rounded-lg px-4 py-3 text-white/50 placeholder-white/30 resize-none" placeholder="თქვენი შეტყობინება..."></textarea>
-            </div>
-            <button disabled class="w-full bg-blue-600/50 text-white/50 font-semibold py-3 rounded-lg cursor-not-allowed">
-              გაგზავნა (მალე)
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
