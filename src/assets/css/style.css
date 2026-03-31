@@ -2,8 +2,8 @@
     box-sizing: border-box;
 }
 
-/* Make content images feel clickable */
-main img, section img, article img {
+/* Only gallery images are clickable */
+.gallery-grid img {
     cursor: zoom-in;
 }
 body {

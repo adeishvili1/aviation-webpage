@@ -10,7 +10,7 @@
       <div class="border-l-4 border-blue-400 pl-6 mb-6">
         <h3 class="text-2xl font-bold text-white">თვითმფრინავები & შვეულმფრენები</h3>
       </div>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="gallery-grid grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div
           v-for="(img, i) in aircraftImages"
           :key="img.src"
@@ -27,7 +27,7 @@
       <div class="border-l-4 border-blue-400 pl-6 mb-6">
         <h3 class="text-2xl font-bold text-white">ქარხანა & ლაბორატორიები</h3>
       </div>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="gallery-grid grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div
           v-for="(img, i) in factoryImages"
           :key="img.src"
