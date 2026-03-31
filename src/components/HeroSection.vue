@@ -45,7 +45,6 @@
           <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-3">
             {{ $t('hero.title1') }} <span class="gradient-text">{{ $t('hero.title2') }}</span>
           </h1>
-          <p class="text-sm font-semibold text-blue-300/60 tracking-widest uppercase mb-6">{{ $t('hero.subtitle') }}</p>
 
           <p class="text-lg text-blue-200/80 leading-relaxed mb-10 max-w-xl">
             {{ $t('hero.desc') }}
