@@ -1,156 +1,475 @@
 <template>
-  <div class="bg-brand-950 min-h-screen">
-    <PageHero :title="$t('management.title')" :subtitle="$t('management.subtitle')" />
+  <SectionLayout
+    :heroTitle="content.heroTitle"
+    :heroSubtitle="content.heroSubtitle"
+    :sidebarTitle="$t('nav.about')"
+    :sidebarLinks="sidebarLinks"
+  >
+    <div class="space-y-8">
+      <section class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 sm:p-8">
+        <div class="border-l-4 border-blue-400 pl-6 mb-8">
+          <h2 class="text-2xl font-bold text-white">{{ content.structureTitle }}</h2>
+          <p class="text-blue-200/70 mt-2">{{ content.structureDesc }}</p>
+        </div>
 
-    <div class="max-w-7xl mx-auto px-6 pb-20 -mt-10 relative z-10">
-      <div class="flex flex-col lg:flex-row gap-8">
-
-        <main class="lg:w-2/3 space-y-8">
-
-          <!-- Member grid -->
-          <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="hidden lg:block">
+          <div class="flex flex-col items-center">
             <button
-              v-for="m in members"
-              :key="m.id"
-              @click="selectedId = m.id"
-              class="group text-left rounded-xl border p-5 transition-all duration-200 flex items-center gap-4"
-              :class="selectedId === m.id
-                ? 'bg-blue-600/20 border-blue-400 shadow-lg shadow-blue-500/10'
-                : 'bg-brand-900/40 border-blue-500/15 hover:border-blue-400/40 hover:bg-brand-900/60'"
+              type="button"
+              class="w-72 rounded-2xl border border-blue-400/40 bg-blue-600/20 px-5 py-4 text-center shadow-lg shadow-blue-500/10 transition-all hover:bg-blue-600/30"
+              @click="selectedId = 'qutateladze'"
             >
-              <div
-                class="shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-black transition-colors"
-                :class="selectedId === m.id ? 'bg-blue-500 text-white' : 'bg-blue-600/20 text-blue-400 group-hover:bg-blue-600/30'"
-              >
-                {{ m.initials }}
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.topRole }}</div>
+              <div class="mt-2 text-lg font-black text-white">{{ content.topName }}</div>
+            </button>
+
+            <div class="h-8 w-px bg-blue-400/40"></div>
+            <div class="h-px w-[34rem] bg-blue-400/30"></div>
+
+            <div class="grid w-full max-w-4xl grid-cols-2 gap-10">
+              <div class="flex flex-col items-center">
+                <div class="h-8 w-px bg-blue-400/40"></div>
+                <button
+                  type="button"
+                  class="w-72 rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-center transition-all hover:border-blue-300/50 hover:bg-brand-900/80"
+                  @click="selectedId = 'beridze'"
+                >
+                  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.leftRole }}</div>
+                  <div class="mt-2 text-lg font-black text-white">{{ content.leftName }}</div>
+                </button>
               </div>
-              <div class="min-w-0">
-                <div class="text-white font-bold text-sm leading-snug">{{ m.name }}</div>
-                <div class="text-blue-300 text-xs mt-0.5 leading-snug">{{ m.role }}</div>
+
+              <div class="flex flex-col items-center">
+                <div class="h-8 w-px bg-blue-400/40"></div>
+                <button
+                  type="button"
+                  class="w-72 rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-center transition-all hover:border-blue-300/50 hover:bg-brand-900/80"
+                  @click="selectedId = 'nozadze'"
+                >
+                  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.rightRole }}</div>
+                  <div class="mt-2 text-lg font-black text-white">{{ content.rightName }}</div>
+                </button>
               </div>
+            </div>
+
+            <div class="flex w-full max-w-4xl justify-start pl-[22%]">
+              <div class="flex flex-col items-center">
+                <div class="h-8 w-px bg-blue-400/40"></div>
+                <div class="h-px w-[34rem] bg-blue-400/30"></div>
+                <div class="grid w-[34rem] grid-cols-4 gap-4 pt-8">
+                  <button
+                    v-for="member in content.executiveTeam"
+                    :key="member.id"
+                    type="button"
+                    class="rounded-2xl border px-4 py-4 text-center transition-all"
+                    :class="member.clickable
+                      ? 'border-blue-400/25 bg-brand-950/65 hover:border-blue-300/50 hover:bg-brand-900/80'
+                      : 'cursor-default border-blue-500/10 bg-brand-950/45'"
+                    @click="selectMember(member.id, member.clickable)"
+                  >
+                    <div class="mx-auto mb-3 h-6 w-px bg-blue-400/40"></div>
+                    <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300">{{ member.role }}</div>
+                    <div class="mt-2 text-sm font-bold leading-snug text-white">{{ member.name }}</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 lg:hidden">
+          <button
+            type="button"
+            class="rounded-2xl border border-blue-400/40 bg-blue-600/20 px-5 py-4 text-left"
+            @click="selectedId = 'qutateladze'"
+          >
+            <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.topRole }}</div>
+            <div class="mt-2 text-lg font-black text-white">{{ content.topName }}</div>
+          </button>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <button
+              type="button"
+              class="rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-left"
+              @click="selectedId = 'beridze'"
+            >
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.leftRole }}</div>
+              <div class="mt-2 text-lg font-black text-white">{{ content.leftName }}</div>
+            </button>
+
+            <button
+              type="button"
+              class="rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-left"
+              @click="selectedId = 'nozadze'"
+            >
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.rightRole }}</div>
+              <div class="mt-2 text-lg font-black text-white">{{ content.rightName }}</div>
             </button>
           </div>
 
-          <!-- Selected member profile -->
-          <Transition name="profile" mode="out-in">
-            <div v-if="selected" :key="selected.id" class="space-y-6">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <button
+              v-for="member in content.executiveTeam"
+              :key="member.id"
+              type="button"
+              class="rounded-2xl border px-5 py-4 text-left"
+              :class="member.clickable
+                ? 'border-blue-400/25 bg-brand-950/65'
+                : 'cursor-default border-blue-500/10 bg-brand-950/45'"
+              @click="selectMember(member.id, member.clickable)"
+            >
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ member.role }}</div>
+              <div class="mt-2 text-lg font-black text-white">{{ member.name }}</div>
+            </button>
+          </div>
+        </div>
+      </section>
 
-              <!-- Header card -->
-              <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-                <div class="flex flex-col sm:flex-row gap-6 items-start">
-                  <div class="shrink-0 w-40 h-48 rounded-xl bg-blue-600/10 border border-blue-500/20 flex flex-col items-center justify-center gap-3">
-                    <svg class="w-16 h-16 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                    </svg>
-                    <span class="text-blue-500/40 text-xs">{{ $t('management.photo') }}</span>
-                  </div>
+      <section class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        <button
+          v-for="member in content.profiles"
+          :key="member.id"
+          class="group text-left rounded-xl border p-5 transition-all duration-200 flex items-center gap-4"
+          :class="selectedId === member.id
+            ? 'bg-blue-600/20 border-blue-400 shadow-lg shadow-blue-500/10'
+            : 'bg-brand-900/40 border-blue-500/15 hover:border-blue-400/40 hover:bg-brand-900/60'"
+          @click="selectedId = member.id"
+        >
+          <div
+            class="shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-lg font-black transition-colors"
+            :class="selectedId === member.id ? 'bg-blue-500 text-white' : 'bg-blue-600/20 text-blue-400 group-hover:bg-blue-600/30'"
+          >
+            {{ member.initials }}
+          </div>
+          <div class="min-w-0">
+            <div class="text-white font-bold text-sm leading-snug">{{ member.name }}</div>
+            <div class="text-blue-300 text-xs mt-0.5 leading-snug">{{ member.role }}</div>
+          </div>
+        </button>
+      </section>
 
-                  <div class="flex-1">
-                    <h2 class="text-3xl font-black text-white mb-1">{{ selected.name }}</h2>
-                    <div class="border-l-4 border-blue-400 pl-4 mb-5">
-                      <p class="text-blue-300 font-semibold text-lg">{{ selected.role }}</p>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-3">
-                      <div v-if="selected.dob" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.dob') }}</div>
-                        <div class="text-white text-sm font-medium">{{ selected.dob }}</div>
-                      </div>
-                      <div v-if="selected.languages?.length" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.languages') }}</div>
-                        <div class="text-white text-sm font-medium">{{ selected.languages.join(', ') }}</div>
-                      </div>
-                      <div v-if="selected.specialty" class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20 sm:col-span-2">
-                        <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ $t('management.specialty') }}</div>
-                        <div class="text-white text-sm font-medium">{{ selected.specialty }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <section v-if="selectedProfile" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-start">
+          <div class="shrink-0 w-32 h-40 rounded-xl bg-blue-600/10 border border-blue-500/20 flex flex-col items-center justify-center gap-3">
+            <svg class="w-14 h-14 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+            <span class="text-blue-500/40 text-xs">{{ content.photoLabel }}</span>
+          </div>
 
-              <!-- Career timeline -->
-              <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-                <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">{{ $t('management.experience') }}</h3>
-                </div>
-                <div v-for="(group, gi) in selected.experience" :key="gi" class="mb-6 last:mb-0">
-                  <div class="text-blue-400 font-bold text-sm mb-3 uppercase tracking-widest">{{ group.company }}</div>
-                  <div class="relative pl-5 space-y-3">
-                    <div class="absolute left-0 top-2 bottom-2 w-px bg-blue-500/20"></div>
-                    <div v-for="(item, ii) in group.items" :key="ii" class="relative">
-                      <div class="absolute -left-5 top-2 w-2.5 h-2.5 rounded-full border-2 border-blue-400 bg-brand-950"></div>
-                      <div class="bg-blue-500/8 rounded-lg p-3 border border-blue-500/10">
-                        <div class="text-white font-semibold text-sm">{{ item.role }}</div>
-                        <div class="text-blue-300/60 text-xs mt-0.5">{{ item.period }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Education -->
-              <div v-if="selected.education?.length" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-                <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">{{ $t('management.education') }}</h3>
-                </div>
-                <div class="space-y-3">
-                  <div v-for="(edu, i) in selected.education" :key="i" class="flex gap-4 p-4 bg-blue-500/8 rounded-lg border border-blue-500/10">
-                    <div class="shrink-0 w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center">
-                      <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <div class="text-white font-semibold text-sm">{{ edu.institution }}</div>
-                      <div class="text-blue-300/80 text-sm">{{ edu.degree }}</div>
-                      <div class="text-blue-300/50 text-xs mt-0.5">{{ edu.period }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Awards -->
-              <div v-if="selected.awards?.length" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-                <div class="border-l-4 border-blue-400 pl-6 mb-6">
-                  <h3 class="text-xl font-bold text-white">{{ $t('management.awards') }}</h3>
-                </div>
-                <div class="space-y-3">
-                  <div v-for="(award, i) in selected.awards" :key="i" class="flex gap-4 p-4 bg-yellow-500/5 rounded-lg border border-yellow-500/15">
-                    <div class="shrink-0 text-yellow-400 text-xl">🏅</div>
-                    <div>
-                      <div class="text-white font-semibold text-sm">{{ award.title }}</div>
-                      <div class="text-blue-200/60 text-xs mt-0.5">{{ award.desc }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+          <div class="flex-1">
+            <h2 class="text-3xl font-black text-white mb-1">{{ selectedProfile.name }}</h2>
+            <div class="border-l-4 border-blue-400 pl-4 mb-5">
+              <p class="text-blue-300 font-semibold text-lg">{{ selectedProfile.role }}</p>
             </div>
-          </Transition>
 
-        </main>
+            <p class="text-blue-100/90 leading-relaxed mb-6">
+              {{ selectedProfile.summary }}
+            </p>
 
-        <PageSidebar :title="$t('nav.about')" :links="sidebarLinks" />
-      </div>
+            <div class="grid md:grid-cols-2 gap-3">
+              <div
+                v-for="fact in selectedProfile.facts"
+                :key="fact.label"
+                class="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20"
+              >
+                <div class="text-blue-300/70 text-xs font-semibold mb-1 uppercase tracking-wider">{{ fact.label }}</div>
+                <div class="text-white text-sm font-medium">{{ fact.value }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
+  </SectionLayout>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import PageHero from '../../components/PageHero.vue'
-import PageSidebar from '../../components/PageSidebar.vue'
+import SectionLayout from '../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../data/navigation.js'
-import { useManagementStore } from '../../stores/management.js'
 
-const { t: $t } = useI18n()
-
+const { locale, t: $t } = useI18n()
 const sidebarLinks = getSidebarLinks('about')
-const store = useManagementStore()
-const members = computed(() => store.members)
+const selectedId = ref('qutateladze')
 
-const selectedId = ref(members.value[0]?.id ?? null)
-const selected = computed(() => members.value.find(m => m.id === selectedId.value) ?? members.value[0])
+const content = computed(() => {
+  if (locale.value === 'en') {
+    return {
+      heroTitle: 'Management',
+      heroSubtitle: 'Leadership structure of JSC Tbilisi Aircraft Manufacturing',
+      structureTitle: 'Organizational Structure',
+      structureDesc: 'The management hierarchy is presented as a tree-like structure so the reporting lines are clear and easy to follow.',
+      topRole: 'General Director',
+      topName: 'Mikheil Kutateladze',
+      leftRole: 'Executive Director',
+      leftName: 'Nodar Beridze',
+      rightRole: 'Financial Director',
+      rightName: 'Giorgi Nozadze',
+      photoLabel: 'Profile',
+      executiveTeam: [
+        { id: 'lolashvili', role: 'Technical Director', name: 'Albert Lolashvili', clickable: true },
+        { id: 'jamsapashvili', role: 'Production Director', name: 'Giorgi Jamaspashvili', clickable: true },
+        { id: 'ichqitidze', role: 'Quality Management Director', name: 'Roman Ichqitidze', clickable: false },
+        { id: 'lomidze', role: 'Commercial Director', name: 'Otar Lomidze', clickable: true },
+      ],
+      profiles: [
+        {
+          id: 'qutateladze',
+          initials: 'MK',
+          name: 'Mikheil Kutateladze',
+          role: 'General Director',
+          summary: 'Provides strategic leadership for the enterprise and oversees the company’s long-term development priorities.',
+          facts: [
+            { label: 'Responsibility', value: 'Overall strategic management' },
+            { label: 'Reports', value: 'Executive Director, Financial Director' },
+          ],
+        },
+        {
+          id: 'beridze',
+          initials: 'NB',
+          name: 'Nodar Beridze',
+          role: 'Executive Director',
+          summary: 'Coordinates day-to-day execution across production, technical, quality and commercial units.',
+          facts: [
+            { label: 'Responsibility', value: 'Operational execution' },
+            { label: 'Supervises', value: 'Technical, Production, Quality and Commercial Directors' },
+          ],
+        },
+        {
+          id: 'nozadze',
+          initials: 'GN',
+          name: 'Giorgi Nozadze',
+          role: 'Financial Director',
+          summary: 'Leads financial planning, reporting and financial control functions across the company.',
+          facts: [
+            { label: 'Responsibility', value: 'Finance and reporting' },
+            { label: 'Focus', value: 'Budgeting, control, sustainability' },
+          ],
+        },
+        {
+          id: 'lolashvili',
+          initials: 'AL',
+          name: 'Albert Lolashvili',
+          role: 'Technical Director',
+          summary: 'Oversees technical capability, engineering coordination and maintenance readiness.',
+          facts: [
+            { label: 'Responsibility', value: 'Technical direction' },
+            { label: 'Focus', value: 'Engineering and maintenance systems' },
+          ],
+        },
+        {
+          id: 'jamsapashvili',
+          initials: 'GJ',
+          name: 'Giorgi Jamaspashvili',
+          role: 'Production Director',
+          summary: 'Manages industrial processes, workshop performance and production delivery.',
+          facts: [
+            { label: 'Responsibility', value: 'Production operations' },
+            { label: 'Focus', value: 'Workshops and output management' },
+          ],
+        },
+        {
+          id: 'lomidze',
+          initials: 'OL',
+          name: 'Otar Lomidze',
+          role: 'Commercial Director',
+          summary: 'Leads commercial relations, contracts and business development activities.',
+          facts: [
+            { label: 'Responsibility', value: 'Commercial strategy' },
+            { label: 'Focus', value: 'Contracts and partnerships' },
+          ],
+        },
+      ],
+    }
+  }
+
+  if (locale.value === 'ru') {
+    return {
+      heroTitle: 'Руководство',
+      heroSubtitle: 'Структура руководства JSC Tbilisi Aircraft Manufacturing',
+      structureTitle: 'Организационная структура',
+      structureDesc: 'Иерархия управления представлена в виде дерева, чтобы структура подчинённости была наглядной и понятной.',
+      topRole: 'Генеральный директор',
+      topName: 'Михаил Кутателадзе',
+      leftRole: 'Исполнительный директор',
+      leftName: 'Нодар Беридзе',
+      rightRole: 'Финансовый директор',
+      rightName: 'Гиорги Нозадзе',
+      photoLabel: 'Профиль',
+      executiveTeam: [
+        { id: 'lolashvili', role: 'Технический директор', name: 'Альберт Лолашвили', clickable: true },
+        { id: 'jamsapashvili', role: 'Директор по производству', name: 'Гиорги Джамаспашвили', clickable: true },
+        { id: 'ichqitidze', role: 'Директор по управлению качеством', name: 'Роман Ичкитидзе', clickable: false },
+        { id: 'lomidze', role: 'Коммерческий директор', name: 'Отар Ломидзе', clickable: true },
+      ],
+      profiles: [
+        {
+          id: 'qutateladze',
+          initials: 'МК',
+          name: 'Михаил Кутателадзе',
+          role: 'Генеральный директор',
+          summary: 'Осуществляет стратегическое руководство предприятием и определяет долгосрочные направления развития компании.',
+          facts: [
+            { label: 'Ответственность', value: 'Общее стратегическое управление' },
+            { label: 'Подчиняются', value: 'Исполнительный директор, Финансовый директор' },
+          ],
+        },
+        {
+          id: 'beridze',
+          initials: 'НБ',
+          name: 'Нодар Беридзе',
+          role: 'Исполнительный директор',
+          summary: 'Координирует ежедневное исполнение задач между производственным, техническим, качественным и коммерческим направлениями.',
+          facts: [
+            { label: 'Ответственность', value: 'Операционное управление' },
+            { label: 'Курирует', value: 'Технического, Производственного, Коммерческого и Директора по качеству' },
+          ],
+        },
+        {
+          id: 'nozadze',
+          initials: 'ГН',
+          name: 'Гиорги Нозадзе',
+          role: 'Финансовый директор',
+          summary: 'Руководит финансовым планированием, отчётностью и финансовым контролем компании.',
+          facts: [
+            { label: 'Ответственность', value: 'Финансы и отчётность' },
+            { label: 'Фокус', value: 'Бюджетирование, контроль, устойчивость' },
+          ],
+        },
+        {
+          id: 'lolashvili',
+          initials: 'АЛ',
+          name: 'Альберт Лолашвили',
+          role: 'Технический директор',
+          summary: 'Отвечает за технические возможности предприятия, инженерную координацию и готовность к обслуживанию.',
+          facts: [
+            { label: 'Ответственность', value: 'Техническое руководство' },
+            { label: 'Фокус', value: 'Инженерия и системы обслуживания' },
+          ],
+        },
+        {
+          id: 'jamsapashvili',
+          initials: 'ГД',
+          name: 'Гиорги Джамаспашвили',
+          role: 'Директор по производству',
+          summary: 'Управляет производственными процессами, работой цехов и выпуском продукции.',
+          facts: [
+            { label: 'Ответственность', value: 'Производственные операции' },
+            { label: 'Фокус', value: 'Цеха и управление выпуском' },
+          ],
+        },
+        {
+          id: 'lomidze',
+          initials: 'ОЛ',
+          name: 'Отар Ломидзе',
+          role: 'Коммерческий директор',
+          summary: 'Руководит коммерческими отношениями, контрактами и развитием бизнеса.',
+          facts: [
+            { label: 'Ответственность', value: 'Коммерческая стратегия' },
+            { label: 'Фокус', value: 'Контракты и партнёрства' },
+          ],
+        },
+      ],
+    }
+  }
+
+  return {
+    heroTitle: 'ხელმძღვანელობა',
+    heroSubtitle: 'სს თბილავიამშენის ხელმძღვანელობის სტრუქტურა',
+    structureTitle: 'ორგანიზაციული სტრუქტურა',
+    structureDesc: 'ხელმძღვანელობის იერარქია წარმოდგენილია ხის მსგავსი სტრუქტურით, რათა დაქვემდებარების ხაზი მკაფიო და მარტივად აღსაქმელი იყოს.',
+    topRole: 'გენერალური დირექტორი',
+    topName: 'მიხეილ ქუთათელაძე',
+    leftRole: 'აღმასრულებელი დირექტორი',
+    leftName: 'ნოდარ ბერიძე',
+    rightRole: 'ფინანსური დირექტორი',
+    rightName: 'გიორგი ნოზაძე',
+    photoLabel: 'პროფილი',
+    executiveTeam: [
+      { id: 'lolashvili', role: 'ტექნიკური დირექტორი', name: 'ალბერტ ლოლაშვილი', clickable: true },
+      { id: 'jamsapashvili', role: 'წარმოების დირექტორი', name: 'გიორგი ჯამასპაშვილი', clickable: true },
+      { id: 'ichqitidze', role: 'ხარისხის მართვის დირექტორი', name: 'რომან იჩქიტიძე', clickable: false },
+      { id: 'lomidze', role: 'კომერციული დირექტორი', name: 'ოთარ ლომიძე', clickable: true },
+    ],
+    profiles: [
+      {
+        id: 'qutateladze',
+        initials: 'მქ',
+        name: 'მიხეილ ქუთათელაძე',
+        role: 'გენერალური დირექტორი',
+        summary: 'ხელმძღვანელობს საწარმოს სტრატეგიულ განვითარებას და განსაზღვრავს კომპანიის გრძელვადიან პრიორიტეტებს.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'საერთო სტრატეგიული მართვა' },
+          { label: 'უშუალო დაქვემდებარება', value: 'აღმასრულებელი დირექტორი, ფინანსური დირექტორი' },
+        ],
+      },
+      {
+        id: 'beridze',
+        initials: 'ნბ',
+        name: 'ნოდარ ბერიძე',
+        role: 'აღმასრულებელი დირექტორი',
+        summary: 'კოორდინაციას უწევს ყოველდღიურ ოპერაციულ პროცესებს ტექნიკურ, საწარმოო, ხარისხისა და კომერციულ მიმართულებებს შორის.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'ოპერაციული მართვა' },
+          { label: 'კურირებს', value: 'ტექნიკურ, საწარმოო, ხარისხისა და კომერციულ დირექტორებს' },
+        ],
+      },
+      {
+        id: 'nozadze',
+        initials: 'გნ',
+        name: 'გიორგი ნოზაძე',
+        role: 'ფინანსური დირექტორი',
+        summary: 'ხელმძღვანელობს ფინანსურ დაგეგმვას, ანგარიშგებასა და კომპანიის ფინანსურ კონტროლს.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'ფინანსები და ანგარიშგება' },
+          { label: 'ფოკუსი', value: 'ბიუჯეტირება, კონტროლი, მდგრადობა' },
+        ],
+      },
+      {
+        id: 'lolashvili',
+        initials: 'ალ',
+        name: 'ალბერტ ლოლაშვილი',
+        role: 'ტექნიკური დირექტორი',
+        summary: 'პასუხისმგებელია საწარმოს ტექნიკურ შესაძლებლობებზე, საინჟინრო კოორდინაციასა და ტექნიკურ მზადყოფნაზე.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'ტექნიკური მიმართულება' },
+          { label: 'ფოკუსი', value: 'საინჟინრო და ტექნიკური სისტემები' },
+        ],
+      },
+      {
+        id: 'jamsapashvili',
+        initials: 'გჯ',
+        name: 'გიორგი ჯამასპაშვილი',
+        role: 'წარმოების დირექტორი',
+        summary: 'მართავს საწარმოო პროცესებს, საამქროების მუშაობასა და პროდუქციის მიწოდების მიმდინარეობას.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'საწარმოო ოპერაციები' },
+          { label: 'ფოკუსი', value: 'საამქროები და გამოშვების მართვა' },
+        ],
+      },
+      {
+        id: 'lomidze',
+        initials: 'ოლ',
+        name: 'ოთარ ლომიძე',
+        role: 'კომერციული დირექტორი',
+        summary: 'ხელმძღვანელობს კომერციულ ურთიერთობებს, კონტრაქტებსა და ბიზნესის განვითარების პროცესს.',
+        facts: [
+          { label: 'პასუხისმგებლობა', value: 'კომერციული სტრატეგია' },
+          { label: 'ფოკუსი', value: 'კონტრაქტები და პარტნიორობა' },
+        ],
+      },
+    ],
+  }
+})
+
+const selectedProfile = computed(() => {
+  return content.value.profiles.find((member) => member.id === selectedId.value) ?? content.value.profiles[0]
+})
+
+function selectMember(memberId, clickable) {
+  if (!clickable) return
+  selectedId.value = memberId
+}
 </script>

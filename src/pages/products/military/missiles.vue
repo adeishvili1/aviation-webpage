@@ -1,53 +1,185 @@
 <template>
   <SectionLayout
-    heroTitle="რაკეტები"
-    heroSubtitle="სარაკეტო სისტემები"
-    sidebarTitle="პროდუქცია"
+    :heroTitle="content.heroTitle"
+    :heroSubtitle="content.heroSubtitle"
+    :sidebarTitle="$t('nav.products')"
     :sidebarLinks="sidebarLinks"
   >
-    <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
-      <div class="border-l-4 border-blue-400 pl-6 mb-8">
-        <h3 class="text-2xl font-bold text-white">R-60 and R-73 Missiles</h3>
-        <p class="text-blue-200/60 text-sm mt-1">„ჰაერი-ჰაერი" ტიპის IR საბრძოლო რაკეტები</p>
-      </div>
-      <div class="space-y-6">
-        <div v-for="missile in missiles" :key="missile.name" class="p-6 bg-blue-500/10 rounded-xl border border-blue-500/15">
-          <div class="flex items-start gap-4">
-            <div class="w-14 h-14 rounded-xl bg-blue-600/20 flex items-center justify-center shrink-0">
-              <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-bold text-xl mb-2">{{ missile.name }}</h4>
-              <p class="text-blue-200/70 leading-relaxed">{{ missile.desc }}</p>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span v-for="tag in missile.tags" :key="tag" class="px-3 py-1 bg-blue-600/20 text-blue-300 text-xs rounded-full border border-blue-500/20">{{ tag }}</span>
-              </div>
-            </div>
+    <div class="space-y-8">
+      <section class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
+        <div class="border-l-4 border-blue-400 pl-6 mb-6">
+          <h3 class="text-2xl font-bold text-white">{{ content.missilesTitle }}</h3>
+          <p class="text-blue-200/80 mt-2 leading-relaxed">
+            {{ content.missilesIntro }}
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            <img src="../../../assets/j.jpg" alt="R-60 missile" class="w-full h-56 object-cover" />
+          </div>
+          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            <img src="../../../assets/j1.jpg" alt="R-73 missile" class="w-full h-56 object-cover" />
+          </div>
+          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            <img src="../../../assets/j3.png" alt="Missile production" class="w-full h-56 object-contain bg-slate-50 p-3" />
           </div>
         </div>
-      </div>
+
+        <div class="space-y-4">
+          <article
+            v-for="paragraph in content.missileParagraphs"
+            :key="paragraph"
+            class="p-6 bg-blue-500/10 rounded-xl border border-blue-500/15"
+          >
+            <p class="text-blue-100/90 leading-relaxed">
+              {{ paragraph }}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
+        <div class="border-l-4 border-blue-400 pl-6 mb-6">
+          <h3 class="text-2xl font-bold text-white">{{ content.recorderTitle }}</h3>
+          <p class="text-blue-200/80 mt-2 leading-relaxed">
+            {{ content.recorderIntro }}
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-6 items-start">
+          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            <img src="../../../assets/j4.png" alt="Flight recorder modernization" class="w-full h-[28rem] object-contain bg-slate-50 p-4" />
+          </div>
+
+          <div class="space-y-6">
+            <article class="p-6 bg-blue-500/10 rounded-xl border border-blue-500/15">
+              <h4 class="text-white font-bold text-lg mb-4">{{ content.specsTitle }}</h4>
+              <ul class="space-y-3">
+                <li
+                  v-for="item in content.recorderSpecs"
+                  :key="item"
+                  class="flex items-start gap-3 text-blue-100/90"
+                >
+                  <span class="w-2 h-2 bg-blue-400 rounded-full shrink-0 mt-2"></span>
+                  <span>{{ item }}</span>
+                </li>
+              </ul>
+            </article>
+
+            <article class="p-6 bg-blue-500/10 rounded-xl border border-blue-500/15">
+              <h4 class="text-white font-bold text-lg mb-4">{{ content.blocksTitle }}</h4>
+              <ul class="space-y-3">
+                <li
+                  v-for="block in content.recorderBlocks"
+                  :key="block"
+                  class="flex items-start gap-3 text-blue-100/90"
+                >
+                  <span class="w-2 h-2 bg-blue-400 rounded-full shrink-0 mt-2"></span>
+                  <span>{{ block }}</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
     </div>
   </SectionLayout>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../../data/navigation.js'
 
+const { locale, t: $t } = useI18n()
 const sidebarLinks = getSidebarLinks('products')
 
-const missiles = [
-  {
-    name: 'R-60',
-    desc: 'R-60 — „ჰაერი-ჰაერი" ტიპის მოკლე მანძილის ინფრაწითელი მიმდევარი რაკეტა. ქარხანა, 90-იანი წლებამდე, R-60 საბრძოლო რაკეტებს აწარმოებდა.',
-    tags: ['Air-to-Air', 'IR Guided', 'Short Range'],
-  },
-  {
-    name: 'R-73',
-    desc: 'R-73 — „ჰაერი-ჰაერი" ტიპის მაღალი მანევრულობის ინფრაწითელი მიმდევარი რაკეტა. 90-იანი წლებამდე „თბილავიამშენი" R-73 IR საბრძოლო რაკეტებსაც აწარმოებდა.',
-    tags: ['Air-to-Air', 'IR Guided', 'High Maneuverability'],
-  },
-]
+const content = computed(() => {
+  if (locale.value === 'en') {
+    return {
+      heroTitle: 'Missiles',
+      heroSubtitle: 'Missiles and Recorder Modernization',
+      missilesTitle: 'R-60 and R-73 Missiles',
+      missilesIntro: 'Missile production, repair, restoration and service-life extension.',
+      missileParagraphs: [
+        'Since the late 1970s, Tbilisi Aircraft Manufacturing has produced R-60 and R-73 missiles. Approximately 34,000 R-60 units and approximately 6,000 R-73 units have been manufactured.',
+        'Today the company carries out missile repair, restoration and extension of their operational service life.',
+      ],
+      recorderTitle: 'Flight Recorder Modernization',
+      recorderIntro: 'Modernization is carried out according to the following technical data.',
+      specsTitle: 'Technical Data',
+      recorderSpecs: [
+        'Product: Mi-24 / Mi-8 helicopters and their modifications.',
+        'Total number of signals: 40.',
+        'Country of manufacture: Georgia.',
+        'Service life: 10 years.',
+      ],
+      blocksTitle: 'Main System Blocks',
+      recorderBlocks: [
+        'Crash-Survivable Data Recorder, main monitoring block, MMB-40.',
+        'Concentrator, data collection block, DCB-40.',
+        'G-force measurement unit, GMU-40.',
+        'Couple connector module, TB-40.',
+      ],
+    }
+  }
+
+  if (locale.value === 'ru') {
+    return {
+      heroTitle: 'Ракеты',
+      heroSubtitle: 'Ракеты и модернизация самописца',
+      missilesTitle: 'Ракеты R-60 и R-73',
+      missilesIntro: 'Производство, ремонт, восстановление и продление срока эксплуатации ракет.',
+      missileParagraphs: [
+        'С конца 1970-х годов Тбилавиамшени начал производство ракет типов R-60 и R-73. Всего выпущено около 34 000 единиц R-60 и около 6 000 единиц R-73.',
+        'В настоящее время предприятие осуществляет ремонт, восстановление и продление эксплуатационного ресурса ракет.',
+      ],
+      recorderTitle: 'Модернизация бортового регистратора полёта',
+      recorderIntro: 'Модернизация выполняется на основе следующих технических данных.',
+      specsTitle: 'Технические данные',
+      recorderSpecs: [
+        'Продукт: вертолёты Mi-24 / Mi-8 и их модификации.',
+        'Общее количество сигналов: 40.',
+        'Место производства: Грузия.',
+        'Ресурс: 10 лет.',
+      ],
+      blocksTitle: 'Основные блоки системы',
+      recorderBlocks: [
+        'Crash-Survivable Data Recorder, основной блок мониторинга, MMB-40.',
+        'Concentrator, блок сбора данных, DCB-40.',
+        'Блок измерения перегрузки, GMU-40.',
+        'Couple, соединительный модуль, TB-40.',
+      ],
+    }
+  }
+
+  return {
+    heroTitle: 'რაკეტები',
+    heroSubtitle: 'რაკეტები და ჩამწერი მოწყობილობის მოდერნიზება',
+    missilesTitle: 'R-60 და R-73 ტიპის რაკეტები',
+    missilesIntro: 'რაკეტების წარმოება, რემონტი, აღდგენა და საექსპლუატაციო რესურსის გახანგრძლივება.',
+    missileParagraphs: [
+      '1970-იანი წლების მიწურულიდან თბილავიამშენში დაიწყო R-60 და R-73 ტიპის რაკეტების წარმოება. სულ გამოშვებულია დაახლოებით 34 000 ერთეული R-60 და დაახლოებით 6 000 ერთეული R-73.',
+      'ამჟამად თბილავიამშენი ახორციელებს რაკეტების რემონტს, აღდგენას და მისი საექსპლუატაციო რესურსის გახანგრძლივებას.',
+    ],
+    recorderTitle: 'ფრენების ჩამწერი მოწყობილობის მოდერნიზება',
+    recorderIntro: 'მოდერნიზაცია ხორციელდება შემდეგ ტექნიკურ მონაცემებზე დაყრდნობით.',
+    specsTitle: 'ტექნიკური მონაცემები',
+    recorderSpecs: [
+      'პროდუქტი: Mi-24 / Mi-8 ტიპის შვეულმფრენები და მათი მოდიფიკაციები.',
+      'სიგნალების საერთო რაოდენობა: 40.',
+      'წარმოების ადგილი: საქართველო.',
+      'რესურსი: 10 წელი.',
+    ],
+    blocksTitle: 'სისტემის შემადგენელი ძირითადი ბლოკები',
+    recorderBlocks: [
+      'Crash-Survivable Data Recorder — მთავარი მონიტორინგის ბლოკი (MMB-40).',
+      'Concentrator — მონაცემთა შეგროვების ბლოკი (DCB-40).',
+      'G-ძალის გაზომვის ერთეული — GMU-40.',
+      'Couple, შემაერთებელი მოდული — TB-40.',
+    ],
+  }
+})
 </script>

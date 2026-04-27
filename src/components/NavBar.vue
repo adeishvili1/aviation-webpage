@@ -47,9 +47,9 @@
       <div class="w-full px-10 py-3 flex items-center justify-between">
         <!-- Logo -->
         <router-link to="/" class="flex items-center gap-3 group cursor-pointer">
-          <img class="h-12 w-auto" src="../assets/logo1.png" alt="logo">
+          <img class="h-12 w-auto object-contain" src="../assets/logo1.png" alt="logo">
           <div>
-            <span class="text-[11px] font-bold text-white tracking-wider">სს თბილავიამშენი</span>
+            <span class="text-[11px] font-bold text-white tracking-wider">სს თბილისავიამშენი</span>
             <span class="text-[9px] text-blue-300 block tracking-[0.3em] font-light">JSC TBILISI AIRCRAFT<br>MANUFACTURING</span>
           </div>
         </router-link>

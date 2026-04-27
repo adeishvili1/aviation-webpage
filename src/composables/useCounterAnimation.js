@@ -9,15 +9,16 @@ export function useCounterAnimation() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const target = parseInt(entry.target.dataset.count)
+            const suffix = entry.target.dataset.suffix || ''
             let current = 0
             const increment = target / 60
             const timer = setInterval(() => {
               current += increment
               if (current >= target) {
-                entry.target.textContent = target
+                entry.target.textContent = `${target}${suffix}`
                 clearInterval(timer)
               } else {
-                entry.target.textContent = Math.floor(current)
+                entry.target.textContent = `${Math.floor(current)}${suffix}`
               }
             }, 25)
             observer.unobserve(entry.target)

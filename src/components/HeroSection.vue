@@ -3,8 +3,8 @@
 
     <iframe
         id="player"
-        src="https://www.youtube.com/embed/B3SClf2IAZg?autoplay=1&mute=1&loop=1&playlist=B3SClf2IAZg&controls=0&modestbranding=1&rel=0&playsinline=1"
-        class="video"
+        src="https://www.youtube.com/embed/tFHYBGL17QM?autoplay=1&mute=1&loop=1&playlist=tFHYBGL17QM&controls=0&modestbranding=1&rel=0&playsinline=1"
+        class="video hidden md:block"
         frameborder="0"
         allow="autoplay; encrypted-media"
         allowfullscreen
@@ -42,9 +42,13 @@
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Left: Text -->
         <div>
-          <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-3">
-            {{ $t('hero.title1') }} <span class="gradient-text">{{ $t('hero.title2') }}</span>
+          <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4">
+            {{ $t('hero.title1') }}
           </h1>
+
+          <p v-if="locale === 'en'" class="text-xl md:text-2xl font-semibold text-blue-100/90 mb-6">
+            {{ $t('hero.subtitle') }}
+          </p>
 
           <p class="text-lg text-blue-200/80 leading-relaxed mb-10 max-w-xl">
             {{ $t('hero.desc') }}
@@ -63,7 +67,7 @@
         <!-- Right: Stats Cards -->
         <div class="grid grid-cols-2 gap-4">
           <div v-for="stat in stats" :key="stat.labelKey" class="stat-glow rounded-2xl p-6 text-center">
-            <div class="text-3xl md:text-4xl font-black text-white mb-1" :data-count="stat.count">0</div>
+            <div class="text-3xl md:text-4xl font-black text-white mb-1" :data-count="stat.count" :data-suffix="stat.suffix || ''">0</div>
             <div class="text-sm text-blue-300">{{ $t(stat.labelKey) }}</div>
           </div>
         </div>
@@ -73,6 +77,10 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
 const particles = [
   { id: 1, size: 4, left: 10, duration: 12, delay: 0 },
   { id: 2, size: 6, left: 25, duration: 16, delay: 2 },
@@ -85,8 +93,8 @@ const particles = [
 
 const stats = [
   { count: 40000, labelKey: 'hero.stat_missiles' },
-  { count: 8500,  labelKey: 'hero.stat_aircraft' },
-  { count: 300,   labelKey: 'hero.stat_service' },
+  { count: 8500,  labelKey: 'hero.stat_aircraft', suffix: '+' },
+  { count: 300,   labelKey: 'hero.stat_service', suffix: '+' },
   { count: 85,    labelKey: 'hero.stat_experience' },
 ]
 </script>

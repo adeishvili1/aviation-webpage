@@ -1,20 +1,20 @@
 <template>
   <SectionLayout
-    heroTitle="ლიცენზიები"
-    heroSubtitle="ადგილობრივი ლიცენზიები"
-    sidebarTitle="ჩვენს შესახებ"
+    :heroTitle="content.heroTitle"
+    :heroSubtitle="content.heroSubtitle"
+    :sidebarTitle="$t('nav.about')"
     :sidebarLinks="sidebarLinks"
   >
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
       <div class="border-l-4 border-blue-400 pl-6 mb-8">
-        <h3 class="text-2xl font-bold text-white">გენერალური ლიცენზიები</h3>
-        <p class="text-blue-200/60 text-sm mt-1">გაცემული 2008 წლის 27 მაისს</p>
+        <h3 class="text-2xl font-bold text-white">{{ content.title }}</h3>
+        <p class="text-blue-200/60 text-sm mt-1">{{ content.subtitle }}</p>
       </div>
 
-      <div class="space-y-6">
-        <div v-for="lic in licenses" :key="lic.number" class="bg-blue-500/10 rounded-xl border border-blue-500/20 overflow-hidden">
-          <div v-if="lic.image" class="bg-white p-4">
-            <img :src="lic.image" :alt="'License ' + lic.number" class="w-full max-h-64 object-contain mx-auto" />
+      <div class="space-y-8">
+        <div v-for="lic in content.licenses" :key="lic.number" class="bg-blue-500/10 rounded-xl border border-blue-500/20 overflow-hidden">
+          <div v-if="lic.image" class="bg-white p-3 md:p-5">
+            <img :src="lic.image" :alt="'License ' + lic.number" class="w-full max-h-[34rem] object-contain mx-auto" />
           </div>
           <div class="p-6">
             <div class="flex items-start gap-4">
@@ -40,35 +40,64 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../../data/navigation.js'
-import lic407img from '../../../assets/docx-images/image12.png'
-import lic408img from '../../../assets/docx-images/image13.png'
-import lic409img from '../../../assets/docx-images/image14.png'
+import lic407img from '../../../assets/lic.png'
+import lic408img from '../../../assets/lic2.png'
+import lic409img from '../../../assets/lic3.png'
 
+const { locale, t: $t } = useI18n()
 const sidebarLinks = getSidebarLinks('about')
 
-const licenses = [
-  {
-    number: '407',
-    date: '2008 წლის 27 მაისი',
-    title: 'სამხედრო-საბრძოლო იარაღის დამზადება და წარმოება',
-    desc: 'სამხედრო-საბრძოლო იარაღის დამზადებისა და წარმოების გენერალური ლიცენზია.',
-    image: lic407img,
-  },
-  {
-    number: '408',
-    date: '2008 წლის 27 მაისი',
-    title: 'სამხედრო-საბრძოლო იარაღის შეკეთება და მოდერნიზება',
-    desc: 'სამხედრო-საბრძოლო იარაღის შეკეთების (მოდერნიზებისა და ადგილზე მომსახურების ჩათვლით) გენერალური ლიცენზია.',
-    image: lic408img,
-  },
-  {
-    number: '409',
-    date: '2008 წლის 27 მაისი',
-    title: 'სამხედრო-საბრძოლო იარაღით ვაჭრობა',
-    desc: 'სამხედრო-საბრძოლო იარაღით ვაჭრობის გენერალური ლიცენზია.',
-    image: lic409img,
-  },
-]
+const content = computed(() => {
+  const base = {
+    licenses: [
+      { number: '407', image: lic407img },
+      { number: '408', image: lic408img },
+      { number: '409', image: lic409img },
+    ],
+  }
+
+  if (locale.value === 'en') {
+    return {
+      heroTitle: 'Licenses',
+      heroSubtitle: 'Local Licenses',
+      title: 'General Licenses',
+      subtitle: 'Issued on May 27, 2008',
+      licenses: [
+        { ...base.licenses[0], date: 'May 27, 2008', title: 'Manufacture and Production of Military Weapons', desc: 'General license for manufacture and production of military weapons.' },
+        { ...base.licenses[1], date: 'May 27, 2008', title: 'Repair and Modernization of Military Weapons', desc: 'General license for repair of military weapons, including modernization and on-site service.' },
+        { ...base.licenses[2], date: 'May 27, 2008', title: 'Trade in Military Weapons', desc: 'General license for trade in military weapons.' },
+      ],
+    }
+  }
+
+  if (locale.value === 'ru') {
+    return {
+      heroTitle: 'Лицензии',
+      heroSubtitle: 'Местные лицензии',
+      title: 'Генеральные лицензии',
+      subtitle: 'Выданы 27 мая 2008 года',
+      licenses: [
+        { ...base.licenses[0], date: '27 мая 2008 года', title: 'Изготовление и производство военно-боевого оружия', desc: 'Генеральная лицензия на изготовление и производство военно-боевого оружия.' },
+        { ...base.licenses[1], date: '27 мая 2008 года', title: 'Ремонт и модернизация военно-боевого оружия', desc: 'Генеральная лицензия на ремонт военно-боевого оружия, включая модернизацию и обслуживание на месте.' },
+        { ...base.licenses[2], date: '27 мая 2008 года', title: 'Торговля военно-боевым оружием', desc: 'Генеральная лицензия на торговлю военно-боевым оружием.' },
+      ],
+    }
+  }
+
+  return {
+    heroTitle: 'ლიცენზიები',
+    heroSubtitle: 'ადგილობრივი ლიცენზიები',
+    title: 'გენერალური ლიცენზიები',
+    subtitle: 'გაცემული 2008 წლის 27 მაისს',
+    licenses: [
+      { ...base.licenses[0], date: '2008 წლის 27 მაისი', title: 'სამხედრო-საბრძოლო იარაღის დამზადება და წარმოება', desc: 'სამხედრო-საბრძოლო იარაღის დამზადებისა და წარმოების გენერალური ლიცენზია.' },
+      { ...base.licenses[1], date: '2008 წლის 27 მაისი', title: 'სამხედრო-საბრძოლო იარაღის შეკეთება და მოდერნიზება', desc: 'სამხედრო-საბრძოლო იარაღის შეკეთების, მოდერნიზებისა და ადგილზე მომსახურების გენერალური ლიცენზია.' },
+      { ...base.licenses[2], date: '2008 წლის 27 მაისი', title: 'სამხედრო-საბრძოლო იარაღით ვაჭრობა', desc: 'სამხედრო-საბრძოლო იარაღით ვაჭრობის გენერალური ლიცენზია.' },
+    ],
+  }
+})
 </script>

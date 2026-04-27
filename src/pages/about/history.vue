@@ -1,30 +1,25 @@
 <template>
   <SectionLayout
-    heroTitle="ისტორია"
-    heroSubtitle="სს თბილავიამშენის ისტორია"
-    sidebarTitle="ჩვენს შესახებ"
+    :heroTitle="content.heroTitle"
+    :heroSubtitle="content.heroSubtitle"
+    :sidebarTitle="$t('nav.about')"
     :sidebarLinks="sidebarLinks"
   >
-    <!-- History Infographic -->
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 overflow-hidden mb-6">
-      <img src="../../assets/docx-images/image11.png" alt="History of Aviation Production Timeline" class="w-full object-contain bg-white p-4" />
+      <img src="../../assets/history.png" alt="History timeline" class="w-full object-contain" />
     </div>
 
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8 mb-6">
       <div class="border-l-4 border-blue-400 pl-6 mb-4">
-        <h3 class="text-2xl font-bold text-white">„თბილავიამშენი" — პირველი ქართული საავიაციო საწარმო</h3>
+        <h3 class="text-2xl font-bold text-white">{{ content.title }}</h3>
       </div>
       <p class="text-blue-200/80 leading-relaxed">
-        1941 წლის 15 დეკემბერი „თბილავიამშენის" დაარსების თარიღია. ორგანიზაცია იმჟამად არსებული
-        რამდენიმე ქარხნის ბაზაზე შეიქმნა, მათ შორის იყო ცნობილი 31-ე, 45-ე და 448-ე ქარხნები.
-        ისტორიის მანძილზე „თბილავიამშენმა" 8 500-ზე მეტი სხვადასხვა ტიპის საფრენი აპარატი
-        აწარმოა და გაარემონტა.
+        {{ content.intro }}
       </p>
     </div>
 
-    <!-- Timeline -->
     <div class="space-y-6">
-      <div v-for="entry in timeline" :key="entry.year" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 flex gap-6">
+      <div v-for="entry in content.timeline" :key="entry.year + entry.title" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 flex gap-6">
         <div class="shrink-0 w-20 text-center">
           <span class="text-3xl font-black text-blue-400">{{ entry.year }}</span>
         </div>
@@ -38,71 +33,89 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../data/navigation.js'
 
+const { locale, t: $t } = useI18n()
 const sidebarLinks = getSidebarLinks('about')
 
-const timeline = [
-  {
-    year: '1941',
-    title: 'LaGG-3 — პირველი თვითმფრინავი',
-    text: 'თბილავიამშენმა პირველი თვითმფრინავი — ერთადგილიანი LaGG-3 — დაარსებიდან მცირე დროში შეიქმნა. სერიული წარმოება 1941 წლის ნოემბრიდან დაიწყო. 1941–1944 წლებში ქარხანამ 2 000-ზე მეტი LaGG-3 დაამზადა, რომელთა უმრავლესობამ მე-2 მსოფლიო ომში მიიღო მონაწილეობა. კონსტრუქცია ხისგან იყო აგებული, წონა 2 600 კგ, სიგრძე 9 მ, მაქსიმალური სიჩქარე ~560 კმ/სთ.',
-  },
-  {
-    year: '1942',
-    title: 'La-5 — დახვეწილი გამანადგურებელი',
-    text: '1942 წელს LaGG-3-ის ბაზაზე, გამოცდილების გათვალისწინებით, შეიქმნა La-5. 30-მდე მოდელი დამზადდა. თვითმფრინავი 3 500 კგ-მდე იწონიდა და 650 კმ/სთ-ის განვითარება შეეძლო; ხის კონსტრუქცია სპეციალური დამუშავებით პრაქტიკულად არ იწვოდა. La-5 აღჭურვილი იყო ჰაერის გაგრილების სისტემით — სამხედრო ავიაციაში სიახლე.',
-  },
-  {
-    year: '1944',
-    title: 'Yak-3 — ომის ფავორიტი',
-    text: '1944 წელს თბილავიამშენმა Yak-3-ის დამზადება დაიწყო. საწარმომ 1 000-მდე ერთადგილიანი Yak-3 ააწყო — ომის ყველაზე მსუბუქი და მანევრირებადი გამანადგურებელი. მთლიანად ლითონის კონსტრუქცია. 1944 წლის ზაფხულში 18 Yak-3-მ 24 მოწინააღმდეგე გაანადგურა, ერთი Yak-3-ის დაკარგვით. ომის შემდეგ 40 ერთეული Yak-3 საფრანგეთს საჩუქრად გადაეცა.',
-  },
-  {
-    year: '1946',
-    title: 'Yak-15 — პირველი რეაქტიული გამანადგურებელი',
-    text: '1946–1947 წლებში თბილავიამშენში პირველი რეაქტიული გამანადგურებელი Yak-15 მზადდებოდა. გერმანული Jumo-ს მარკის ძრავის ასლით აღჭურვილი, ~800 კმ/სთ სიჩქარე, 2 600 კგ წონა. ყველა ტექნიკური გაუმართაობის (სქელი ფრთა, გამონაბოლქვი, ზეთის წვეთვა) გამოსწორების შემდეგ სერიული წარმოება დაიწყო. მთლიანობაში 280 Yak-15 აეწყო.',
-  },
-  {
-    year: '1948',
-    title: 'Yak-17 და Yak-17 UTI',
-    text: 'Yak-15-ის დახვეწის შედეგად შეიქმნა Yak-17: შეიცვალა შასი, სიმძიმის ცენტრი, გაიზარდა კაბინა, ფრენის ხანგრძლივობამ. მაქსიმალური სიჩქარე 744 კმ/სთ. თბილავიამშენში 430 Yak-17 აეწყო. 1947–1949 წლებში ასევე იწარმოებოდა სასწავლო Yak-17 UTI. ორივე მოდიფიკაცია ექსპორტზე გაიგზავნა ბულგარეთში, ჩინეთში, პოლონეთში, რუმინეთსა და ჩეხოსლოვაკიაში.',
-  },
-  {
-    year: '1949',
-    title: 'Yak-23 — პირველი სწორი ფრთა',
-    text: '1949 წელს ერთადგილიანი Yak-23-ის წარმოება დაიწყო — პირველი რეაქტიული გამანადგურებელი სწორი ფრთით ბრიტანული ტურბორეაქტიული ძრავით. 3 წელში 300-მდე Yak-23 აეწყო. 5 000 მ სიმაღლეზე ასვლა და 1 000 კმ/სთ სიჩქარის განვითარება 3.5 წუთში. ამერიკული დაზვერვამ რუმინეთიდან ერთი ეგზემპლარი შეძლო შეესყიდა, შეესწავლა და უკან ფარულად დაებრუნებინა.',
-  },
-  {
-    year: '1951',
-    title: 'MiG-15bis — კორეის ომის გმირი',
-    text: '1951 წელს თბილავიამშენი ახალი თაობის MiG-15bis-ის წარმოებას შეუდგა. ბრიტანული ძრავის ლიცენზირებული ასლით. დებიუტი კორეის ომში, სადაც ამერიკული F-86 Sabre-ს ეჯახებოდა. ხშირ შემთხვევაში გამარჯვება პილოტის ოსტატობაზე იყო დამოკიდებული. კრიტიკა — მაქსიმალური სიმძლავრით ხანგრძლივი ფრენა სახიფათო იყო გადახურების გამო.',
-  },
-  {
-    year: '1953',
-    title: 'MiG-17 — ვიეტნამის ომის თანამონაწილე',
-    text: '1953–1956 წლებში ქარხანაში 400-მდე MiG-17 აეწყო. ვიზუალურად MiG-15-ის მსგავსი, მაგრამ თხელი, შეცვლილი ფრთით. საბრძოლო ნათლობა ტაივანის კრიზისში — F-4 Phantom-ზე და F-105 Thunderchief-ზე სწრაფი და მანევრირებადი. ვიეტნამის ომშიც გამოიყენეს. ლიცენზირებული წარმოება პოლონეთში, ჩეხოსლოვაკიაში, ჩინეთშიც.',
-  },
-  {
-    year: '1957',
-    title: 'MiG-21 — ყველაზე გავრცელებული ზებგერითი',
-    text: 'MiG-21-ს სხვები „ფანქრად" და „ვერცხლის მერცხლად" ეძახდნენ. თბილისში ძირითადად 2-ადგილიანი ვერსიები იწარმოებოდა: 181 MiG-21U და 347 MiG-21US. MiG-21U-ს მხოლოდ თბილისი 14 წელი, 1 133 ეგზემპლარი. სულ MiG-21-ის ~14 000 ეგზემპლარი გამოიშვა მსოფლიოში — ყველაზე გავრცელებული ზებგერითი გამანადგურებელი.',
-  },
-  {
-    year: '1979',
-    title: 'Su-25 — მხოლოდ საქართველოში',
-    text: '1979 წელს თბილისში Su-25-ის სერიული წარმოება დაიწყო — ორძრავიანი, 9 800 კგ, 950 კმ/სთ. Su-25 ეს მოდიფიკაცია მხოლოდ საქართველოში იწარმოებოდა. ავღანეთის ომში განსაკუთრებული გამძლეობა გამოავლინა. დღემდე ითვლება თავის კლასში ერთ-ერთ საუკეთესო, მოდერნიზაციის დიდი პოტენციალით.',
-  },
-  {
-    year: '1959',
-    title: 'K-10, La-17 და სარაკეტო წარმოება',
-    text: 'ქარხანამ ასევე უშვებდა ბირთვული მუხტის მატარებელ, ხომალდსაწინააღმდეგო, ზებგერით ფრთოსან რაკეტას K-10. 1959–1966 წლებში La-17 და La-17M ტიპის რადიოსამართავი „მფრინავი სამიზნეებიც" მზადდებოდა. 90-იანი წლებამდე „ჰაერი-ჰაერი" ტიპის R-60 და R-73 IR საბრძოლო რაკეტებიც.',
-  },
-  {
-    year: '1990-იანი',
-    title: 'ახალი მიმართულებები და კოსმოსური პროექტი',
-    text: '1990-იანი წლების მნიშვნელოვანი მეცნიერული წარმატება — „თბილავიამშენისა" და საქართველოს კოსმოსური ნაგებობის ინსტიტუტის ერთობლივი პროექტი: მოძრავი ანტენა-რეფლექტორის დაპროექტება, რომლის პირველი წარმატებული გამოცდა კოსმოსურ სადგურზე განხორციელდა. ასევე: მცირე საწვავის ავზებიდან დაწყებული ჰიდროტურბინებამდე სხვადასხვა პროდუქცია.',
-  },
-]
+const content = computed(() => {
+  const baseTimeline = [
+    ['1941', 'LaGG-3'],
+    ['1942', 'La-5'],
+    ['1944', 'Yak-3'],
+    ['1946', 'Yak-15'],
+    ['1948', 'Yak-17 / Yak-17 UTI'],
+    ['1949', 'Yak-23'],
+    ['1951', 'MiG-15bis'],
+    ['1953', 'MiG-17'],
+    ['1957', 'MiG-21'],
+    ['1979', 'Su-25'],
+    ['1990s', 'New Directions'],
+  ]
+
+  if (locale.value === 'en') {
+    return {
+      heroTitle: 'History',
+      heroSubtitle: 'History of JSC Tbilisi Aircraft Manufacturing',
+      title: 'Tbilaviamsheni, the first Georgian aviation enterprise',
+      intro: 'December 15, 1941 is considered the founding date of Tbilaviamsheni. Over the decades the plant manufactured and repaired thousands of aircraft and became one of the key aviation centers in the region.',
+      timeline: [
+        { year: '1941', title: 'LaGG-3', text: 'The first aircraft serially assembled at the plant during the early war period.' },
+        { year: '1942', title: 'La-5', text: 'A refined fighter derived from earlier wartime experience and improved technical solutions.' },
+        { year: '1944', title: 'Yak-3', text: 'One of the most famous lightweight fighters of the Second World War.' },
+        { year: '1946', title: 'Yak-15', text: 'The plant entered the jet era with one of the first Soviet jet fighters.' },
+        { year: '1948', title: 'Yak-17 / Yak-17 UTI', text: 'Operational and trainer variants were produced and exported abroad.' },
+        { year: '1949', title: 'Yak-23', text: 'A fast early jet fighter produced during the first post-war expansion period.' },
+        { year: '1951', title: 'MiG-15bis', text: 'A major jet fighter type connected with the Korean War period.' },
+        { year: '1953', title: 'MiG-17', text: 'A new generation fighter that also became widely known through later conflicts.' },
+        { year: '1957', title: 'MiG-21', text: 'The world-famous supersonic fighter family had an important production chapter in Tbilisi.' },
+        { year: '1979', title: 'Su-25', text: 'Serial production of the Su-25 became one of the most important chapters in the factory’s history.' },
+        { year: '1990s', title: 'New Directions', text: 'The enterprise expanded into new technical areas, including advanced engineering and research projects.' },
+      ],
+    }
+  }
+  if (locale.value === 'ru') {
+    return {
+      heroTitle: 'История',
+      heroSubtitle: 'История JSC Tbilisi Aircraft Manufacturing',
+      title: 'Тбилавиамшени, первое грузинское авиационное предприятие',
+      intro: '15 декабря 1941 года считается датой основания Тбилавиамшени. За десятилетия завод произвёл и отремонтировал тысячи летательных аппаратов и стал одним из ключевых авиационных центров региона.',
+      timeline: [
+        { year: '1941', title: 'LaGG-3', text: 'Первый самолёт, который серийно собирался на заводе в ранний военный период.' },
+        { year: '1942', title: 'La-5', text: 'Усовершенствованный истребитель, созданный на базе боевого опыта и новых технических решений.' },
+        { year: '1944', title: 'Yak-3', text: 'Один из самых известных лёгких истребителей Второй мировой войны.' },
+        { year: '1946', title: 'Yak-15', text: 'С этим самолётом завод вошёл в реактивную эпоху.' },
+        { year: '1948', title: 'Yak-17 / Yak-17 UTI', text: 'Производились боевые и учебные модификации, поставлявшиеся также на экспорт.' },
+        { year: '1949', title: 'Yak-23', text: 'Быстрый ранний реактивный истребитель периода послевоенного роста.' },
+        { year: '1951', title: 'MiG-15bis', text: 'Крупный реактивный истребитель, связанный с периодом Корейской войны.' },
+        { year: '1953', title: 'MiG-17', text: 'Истребитель нового поколения, известный и по более поздним конфликтам.' },
+        { year: '1957', title: 'MiG-21', text: 'У всемирно известного сверхзвукового истребителя была важная производственная глава в Тбилиси.' },
+        { year: '1979', title: 'Su-25', text: 'Серийное производство Su-25 стало одной из важнейших страниц истории завода.' },
+        { year: '1990-е', title: 'Новые направления', text: 'Предприятие расширило деятельность в новых технических и исследовательских направлениях.' },
+      ],
+    }
+  }
+  return {
+    heroTitle: 'ისტორია',
+    heroSubtitle: 'სს თბილავიამშენის ისტორია',
+    title: 'თბილავიამშენი, პირველი ქართული საავიაციო საწარმო',
+    intro: '1941 წლის 15 დეკემბერი თბილავიამშენის დაარსების თარიღად ითვლება. ათწლეულების განმავლობაში ქარხანამ ათასობით საფრენი აპარატი აწარმოა და გაარემონტა და რეგიონში ერთ-ერთ მთავარ საავიაციო ცენტრად ჩამოყალიბდა.',
+    timeline: [
+      { year: '1941', title: 'LaGG-3', text: 'ქარხნის პირველი სერიული სამხედრო თვითმფრინავი, რომელიც ომის ადრეულ პერიოდში იწარმოებოდა.' },
+      { year: '1942', title: 'La-5', text: 'ომის გამოცდილებაზე დაფუძნებული დახვეწილი გამანადგურებელი.' },
+      { year: '1944', title: 'Yak-3', text: 'მეორე მსოფლიო ომის ერთ-ერთი ყველაზე ცნობილი მსუბუქი გამანადგურებელი.' },
+      { year: '1946', title: 'Yak-15', text: 'ამ მოდელით ქარხანა რეაქტიულ ეპოქაში შევიდა.' },
+      { year: '1948', title: 'Yak-17 / Yak-17 UTI', text: 'საბრძოლო და სასწავლო მოდიფიკაციები, რომლებიც ექსპორტზეც გავიდა.' },
+      { year: '1949', title: 'Yak-23', text: 'ომისშემდგომი ზრდის პერიოდის სწრაფი რეაქტიული გამანადგურებელი.' },
+      { year: '1951', title: 'MiG-15bis', text: 'კორეის ომის ეპოქასთან დაკავშირებული მნიშვნელოვანი რეაქტიული გამანადგურებელი.' },
+      { year: '1953', title: 'MiG-17', text: 'ახალი თაობის გამანადგურებელი, რომელიც მოგვიანო კონფლიქტებშიც გახდა ცნობილი.' },
+      { year: '1957', title: 'MiG-21', text: 'მსოფლიოში ცნობილი ზებგერითი გამანადგურებლის წარმოების მნიშვნელოვანი ნაწილი თბილისს უკავშირდებოდა.' },
+      { year: '1979', title: 'Su-25', text: 'Su-25-ის სერიული წარმოება ქარხნის ისტორიაში ერთ-ერთი ყველაზე მნიშვნელოვანი ეტაპი გახდა.' },
+      { year: '1990-იანი', title: 'ახალი მიმართულებები', text: 'საწარმომ საქმიანობა გააფართოვა ახალ ტექნიკურ და საინჟინრო მიმართულებებში.' },
+    ],
+  }
+})
 </script>

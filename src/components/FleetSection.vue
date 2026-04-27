@@ -3,7 +3,10 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16 reveal" data-parallax="0.06">
         <span class="text-blue-600 font-semibold text-sm tracking-widest uppercase">{{ $t('fleet.label') }}</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">{{ $t('fleet.title1') }} <span class="text-blue-600">{{ $t('fleet.title2') }}</span></h2>
+        <h2 class="text-4xl md:text-5xl font-black mt-3 text-gray-900">
+          {{ $t('fleet.title1') }}
+          <span v-if="$t('fleet.title2')" class="text-blue-600"> {{ $t('fleet.title2') }}</span>
+        </h2>
         <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">{{ $t('fleet.desc') }}</p>
       </div>
 
@@ -50,8 +53,8 @@ const categories = [
     descKey: 'fleet.cat1_desc',
     badgeKey: 'fleet.cat1_badge',
     badgeClass: 'bg-blue-600',
-    image: new URL('../assets/docx-images/image26.jpeg', import.meta.url).href,
-    link: '/products/military/helicopters',
+    image: new URL('../assets/p.png', import.meta.url).href,
+    link: '/about/history',
     items: ['LaGG-3, La-5, Yak-3', 'Yak-15, Yak-17, Yak-23', 'MiG-15, MiG-17, MiG-21', 'Su-25, Su-25UB'],
   },
   {
@@ -59,18 +62,18 @@ const categories = [
     descKey: 'fleet.cat2_desc',
     badgeKey: 'fleet.cat2_badge',
     badgeClass: 'bg-emerald-500',
-    image: new URL('../assets/docx-images/image25.jpeg', import.meta.url).href,
+    image: new URL('../assets/p2.jpg', import.meta.url).href,
     link: '/products/military/helicopters',
-    items: ['Mi-8 / Mi-17 / Mi-171', 'Mi-24 / Mi-35', 'Mi-17 Modernization', 'Mi-24/Mi-35 Life Extension'],
+    items: ['Mi-8', 'Mi-17', 'Mi-24', 'Mi-35'],
   },
   {
     titleKey: 'fleet.cat3_title',
     descKey: 'fleet.cat3_desc',
     badgeKey: 'fleet.cat3_badge',
     badgeClass: 'bg-indigo-600',
-    image: new URL('../assets/docx-images/image26.jpeg', import.meta.url).href,
+    image: new URL('../assets/p3.png', import.meta.url).href,
     link: '/products/services',
-    items: ['Su-25 Overhaul', 'Su-25UB Overhaul', 'Su-25 Modernization', 'GE-31 Development'],
+    items: ['Su-25', 'Su-25UB', 'კაპიტალური რემონტი', 'მოდერნიზება'],
   },
 ]
 </script>

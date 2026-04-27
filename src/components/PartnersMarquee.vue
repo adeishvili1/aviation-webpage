@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative bg-white border-y border-gray-100 overflow-hidden select-none"
+    class="relative hidden overflow-hidden select-none border-y border-gray-100 bg-white md:block"
     style="height: 130px;"
   >
     <div
@@ -43,14 +43,13 @@
           <rect x="23" y="7" width="6" height="2" rx="1" opacity="0.8" />
           <rect x="23" y="19" width="6" height="2" rx="1" opacity="0.8" />
         </svg>
-
       </div>
     </div>
-    <!-- Scrolling text row -->
+
     <div class="absolute bottom-0 left-0 w-full flex whitespace-nowrap overflow-hidden border-t border-gray-100 bg-white/80">
       <div class="marquee-track flex items-center gap-16 px-8 py-2">
         <span v-for="i in 16" :key="i" class="text-xs font-bold tracking-widest uppercase text-gray-300">
-          სს თბილავიამშენი
+          JSC TAM Tbilisi Aircraft Manufacturing
         </span>
       </div>
     </div>
@@ -59,11 +58,11 @@
 
 <script setup>
 const planes = [
-  { id: 1, top: '15px', size: 56, duration: 16, delay: 0,  color: '#60a5fa', trailWidth: 200, trailOpacity: 0.45, zIndex: 3 },
-  { id: 2, top: '45px', size: 36, duration: 24, delay: 4,  color: '#bfdbfe', trailWidth: 120, trailOpacity: 0.25, zIndex: 1 },
-  { id: 3, top: '75px', size: 68, duration: 13, delay: 8,  color: '#3b82f6', trailWidth: 260, trailOpacity: 0.60, zIndex: 4 },
-  { id: 4, top: '95px', size: 28, duration: 30, delay: 2,  color: '#dbeafe', trailWidth: 90,  trailOpacity: 0.18, zIndex: 0 },
+  { id: 1, top: '15px', size: 56, duration: 16, delay: 0, color: '#60a5fa', trailWidth: 200, trailOpacity: 0.45, zIndex: 3 },
+  { id: 2, top: '45px', size: 36, duration: 24, delay: 4, color: '#bfdbfe', trailWidth: 120, trailOpacity: 0.25, zIndex: 1 },
+  { id: 3, top: '75px', size: 68, duration: 13, delay: 8, color: '#3b82f6', trailWidth: 260, trailOpacity: 0.60, zIndex: 4 },
+  { id: 4, top: '95px', size: 28, duration: 30, delay: 2, color: '#dbeafe', trailWidth: 90, trailOpacity: 0.18, zIndex: 0 },
   { id: 5, top: '25px', size: 46, duration: 19, delay: 11, color: '#93c5fd', trailWidth: 160, trailOpacity: 0.35, zIndex: 2 },
-  { id: 6, top: '65px', size: 40, duration: 21, delay: 6,  color: '#bfdbfe', trailWidth: 140, trailOpacity: 0.28, zIndex: 1 },
+  { id: 6, top: '65px', size: 40, duration: 21, delay: 6, color: '#bfdbfe', trailWidth: 140, trailOpacity: 0.28, zIndex: 1 },
 ]
 </script>
