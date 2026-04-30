@@ -9,8 +9,8 @@
     </div>
 
     <!-- World Map — full width -->
-    <div class="mx-auto max-w-6xl px-6 mb-10">
-      <div class="overflow-hidden rounded-[2rem] shadow-2xl shadow-black/10">
+    <div class="w-full px-0 mb-10">
+      <div class="overflow-hidden shadow-2xl shadow-black/10">
         <WorldMap />
       </div>
     </div>

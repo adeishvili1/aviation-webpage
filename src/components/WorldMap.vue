@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-[#07111f] overflow-hidden shadow-2xl" style="padding-top: 65.9%;">
+  <div class="relative h-[320px] sm:h-[380px] md:h-[460px] lg:h-[540px] bg-[#07111f] overflow-hidden shadow-2xl">
     <div class="absolute inset-0">
       <svg :viewBox="worldMap.viewBox" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <!-- Graticule -->
@@ -50,7 +50,7 @@ const graticuleV = [84, 168, 252, 336, 505, 589, 673, 757, 841, 925]
 const regions = [
   { name: 'დასავლეთ ევროპა',              color: '#1d4ed8', ids: ['gb','ie','fr','es','pt','be','nl','lu','de','it','mt','mc','sm','ad','li','no','se','dk','fi','is'] },
   { name: 'ცენტრალური ევროპა',             color: '#2563eb', ids: ['at','ch','cz','sk','pl','hu','si'] },
-  { name: 'აღმოსავლეთ ევროპა',            color: '#3b82f6', ids: ['ua','by','md','ru','ee','lv','lt','ro'] },
+  { name: 'აღმოსავლეთ ევროპა',            color: '#3b82f6', ids: ['ua','by','md','ee','lv','lt','ro'] },
   { name: 'სამხრეთ-აღმოსავლეთ ევროპა',   color: '#1e40af', ids: ['bg','rs','hr','ba','me','mk','al','gr','cy','xk'] },
   { name: 'სამხრეთ კავკასია',              color: '#0ea5e9', ids: ['ge','am','az'] },
   { name: 'ახლო აღმოსავლეთი',             color: '#0284c7', ids: ['tr','sy','lb','il','jo','iq','ir','sa','ye','om','ae','qa','bh','kw','ps'] },

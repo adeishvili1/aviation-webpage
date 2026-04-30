@@ -4,7 +4,8 @@
       <div class="grid gap-12 md:grid-cols-2 xl:grid-cols-5">
         <div class="md:col-span-2 xl:col-span-1">
           <router-link to="/" class="mb-6 flex items-center gap-4">
-            <img class="w-28 max-w-full object-contain" src="../assets/tam-white-logo.png" alt="JSC TAM logo">
+            <!-- Old logo fallback: <img class="w-28 max-w-full object-contain" src="../assets/tam-white-logo.png" alt="JSC TAM logo"> -->
+            <img class="w-32 max-w-full object-contain" src="../assets/tam-navbar-footer-logo.png" alt="JSC TAM logo">
             <div>
               <span class="text-[11px] font-bold text-white tracking-wider">სს თბილავიამშენი</span>
               <span class="mt-1 block text-[9px] font-light tracking-[0.3em] text-blue-300">JSC TBILISI AIRCRAFT MANUFACTURING</span>

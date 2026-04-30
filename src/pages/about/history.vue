@@ -19,11 +19,11 @@
     </div>
 
     <div class="space-y-6">
-      <div v-for="entry in content.timeline" :key="entry.year + entry.title" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 flex gap-6">
-        <div class="shrink-0 w-20 text-center">
-          <span class="text-3xl font-black text-blue-400">{{ entry.year }}</span>
+      <div v-for="entry in content.timeline" :key="entry.year + entry.title" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 flex items-center gap-5 md:gap-6">
+        <div class="shrink-0 w-24 md:w-28 min-h-[72px] flex items-center justify-center text-center">
+          <span class="text-2xl md:text-3xl font-black text-blue-400 break-words leading-tight">{{ entry.year }}</span>
         </div>
-        <div>
+        <div class="flex-1">
           <h4 class="text-lg font-bold text-white mb-2">{{ entry.title }}</h4>
           <p class="text-blue-200/70 text-sm leading-relaxed">{{ entry.text }}</p>
         </div>
@@ -114,7 +114,7 @@ const content = computed(() => {
       { year: '1953', title: 'MiG-17', text: 'ახალი თაობის გამანადგურებელი, რომელიც მოგვიანო კონფლიქტებშიც გახდა ცნობილი.' },
       { year: '1957', title: 'MiG-21', text: 'მსოფლიოში ცნობილი ზებგერითი გამანადგურებლის წარმოების მნიშვნელოვანი ნაწილი თბილისს უკავშირდებოდა.' },
       { year: '1979', title: 'Su-25', text: 'Su-25-ის სერიული წარმოება ქარხნის ისტორიაში ერთ-ერთი ყველაზე მნიშვნელოვანი ეტაპი გახდა.' },
-      { year: '1990-იანი', title: 'ახალი მიმართულებები', text: 'საწარმომ საქმიანობა გააფართოვა ახალ ტექნიკურ და საინჟინრო მიმართულებებში.' },
+      { year: '1990', title: 'ახალი მიმართულებები', text: 'საწარმომ საქმიანობა გააფართოვა ახალ ტექნიკურ და საინჟინრო მიმართულებებში.' },
     ],
   }
 })

@@ -3,8 +3,8 @@
     <PageHero :title="pageText.title" :subtitle="pageText.subtitle" />
 
     <div class="relative z-10 -mt-10 space-y-6 pb-20">
-      <section class="mx-auto max-w-6xl px-6">
-        <div class="overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/20">
+      <section class="w-full px-0">
+        <div class="overflow-hidden border border-white/10 shadow-2xl shadow-black/20">
           <WorldMap />
         </div>
       </section>

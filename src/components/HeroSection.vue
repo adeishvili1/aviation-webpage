@@ -12,7 +12,7 @@
         position:absolute;
         top:50%;
         left:50%;
-        width:210.77vh;
+        width:100%;
         height:110.25vw;
         transform:translate(-50%, -50%);
         pointer-events:none;
