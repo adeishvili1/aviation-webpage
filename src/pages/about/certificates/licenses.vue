@@ -13,8 +13,13 @@
 
       <div class="space-y-8">
         <div v-for="lic in content.licenses" :key="lic.number" class="bg-blue-500/10 rounded-xl border border-blue-500/20 overflow-hidden">
-          <div v-if="lic.image" class="bg-white p-3 md:p-5">
-            <img :src="lic.image" :alt="'License ' + lic.number" class="w-full max-h-[34rem] object-contain mx-auto" />
+          <div v-if="lic.image" class="bg-white p-2 md:p-4">
+            <img
+              :src="lic.image"
+              :alt="'License ' + lic.number"
+              class="w-full max-h-[42rem] object-contain mx-auto cursor-pointer"
+              @click="open(lic.image, 'License ' + lic.number)"
+            />
           </div>
           <div class="p-6">
             <div class="flex items-start gap-4">
@@ -44,11 +49,13 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../../data/navigation.js'
+import { useLightbox } from '../../../composables/useLightbox'
 import lic407img from '../../../assets/lic.png'
 import lic408img from '../../../assets/lic2.png'
 import lic409img from '../../../assets/lic3.png'
 
 const { locale, t: $t } = useI18n()
+const { open } = useLightbox()
 const sidebarLinks = getSidebarLinks('about')
 
 const content = computed(() => {

@@ -13,10 +13,20 @@
 
       <div class="grid gap-6 lg:grid-cols-2 mb-8">
         <div class="bg-white rounded-xl overflow-hidden border border-blue-500/20">
-          <img src="../../../assets/docx-images/image15.png" alt="ISO 9001 certificate" class="w-full max-h-[38rem] object-contain p-3" />
+          <img
+            src="../../../assets/docx-images/image15.png"
+            alt="ISO 9001 certificate"
+            class="w-full max-h-[42rem] object-contain p-2 md:p-4 cursor-pointer"
+            @click="open(isoCertificateImage, 'ISO 9001 certificate')"
+          />
         </div>
         <div class="bg-white rounded-xl overflow-hidden border border-blue-500/20">
-          <img src="../../../assets/lic4.png" alt="International certificate" class="w-full max-h-[38rem] object-contain p-3" />
+          <img
+            src="../../../assets/lic4.png"
+            alt="International certificate"
+            class="w-full max-h-[42rem] object-contain p-2 md:p-4 cursor-pointer"
+            @click="open(internationalCertificateImage, 'International certificate')"
+          />
         </div>
       </div>
 
@@ -42,8 +52,12 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../../data/navigation.js'
+import { useLightbox } from '../../../composables/useLightbox'
+import isoCertificateImage from '../../../assets/docx-images/image15.png'
+import internationalCertificateImage from '../../../assets/lic4.png'
 
 const { locale, t: $t } = useI18n()
+const { open } = useLightbox()
 const sidebarLinks = getSidebarLinks('about')
 
 const content = computed(() => {

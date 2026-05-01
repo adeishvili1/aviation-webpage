@@ -125,6 +125,7 @@
         </div>
       </section>
 
+      <!--
       <section class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
         <button
           v-for="member in content.profiles"
@@ -147,14 +148,23 @@
           </div>
         </button>
       </section>
+      -->
 
       <section v-if="selectedProfile" class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-6 sm:p-8">
         <div class="flex flex-col md:flex-row gap-6 items-start">
-          <div class="shrink-0 w-32 h-40 rounded-xl bg-blue-600/10 border border-blue-500/20 flex flex-col items-center justify-center gap-3">
-            <svg class="w-14 h-14 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-            </svg>
-            <span class="text-blue-500/40 text-xs">{{ content.photoLabel }}</span>
+          <div class="shrink-0 w-48 h-60 rounded-xl bg-blue-600/10 border border-blue-500/20 overflow-hidden flex flex-col items-center justify-center gap-3">
+            <img
+              v-if="selectedPhotoSrc"
+              :src="selectedPhotoSrc"
+              :alt="selectedProfile.name"
+              class="w-full h-full object-cover"
+            >
+            <template v-else>
+              <svg class="w-14 h-14 text-blue-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+              <span class="text-blue-500/40 text-xs">{{ content.photoLabel }}</span>
+            </template>
           </div>
 
           <div class="flex-1">
@@ -208,6 +218,11 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../data/navigation.js'
+import qutateladzePhoto from '../../assets/management-qutateladze.jpeg'
+import nozadzePhoto from '../../assets/management-nozadze.JPG'
+import lolashviliPhoto from '../../assets/management-lolashvili.JPG'
+import jamsapashviliPhoto from '../../assets/management-jamsapashvili.JPG'
+import lomidzePhoto from '../../assets/management-lomidze.JPG'
 
 const { locale, t: $t } = useI18n()
 const sidebarLinks = getSidebarLinks('about')
@@ -230,7 +245,7 @@ const content = computed(() => {
       executiveTeam: [
         { id: 'lolashvili', role: 'Technical Director', name: 'Albert Lolashvili', clickable: true },
         { id: 'jamsapashvili', role: 'Production Director', name: 'Giorgi Jamaspashvili', clickable: true },
-        { id: 'ichqitidze', role: 'Quality Management Director', name: 'Roman Ichqitidze', clickable: false },
+        { id: 'ichqitidze', role: 'Quality Management Director', name: 'Roman Ichqitidze', clickable: true },
         { id: 'lomidze', role: 'Commercial Director', name: 'Otar Lomidze', clickable: true },
       ],
       profiles: [
@@ -290,6 +305,16 @@ const content = computed(() => {
           ],
         },
         {
+          id: 'ichqitidze',
+          initials: 'RI',
+          name: 'Roman Ichqitidze',
+          role: 'Quality Management Director',
+          summary: 'Biography is not provided.',
+          facts: [
+            { label: 'Status', value: 'Biography is not provided' },
+          ],
+        },
+        {
           id: 'lomidze',
           initials: 'OL',
           name: 'Otar Lomidze',
@@ -320,7 +345,7 @@ const content = computed(() => {
       executiveTeam: [
         { id: 'lolashvili', role: 'Технический директор', name: 'Альберт Лолашвили', clickable: true },
         { id: 'jamsapashvili', role: 'Директор по производству', name: 'Гиорги Джамаспашвили', clickable: true },
-        { id: 'ichqitidze', role: 'Директор по управлению качеством', name: 'Роман Ичкитидзе', clickable: false },
+        { id: 'ichqitidze', role: 'Директор по управлению качеством', name: 'Роман Ичкитидзе', clickable: true },
         { id: 'lomidze', role: 'Коммерческий директор', name: 'Отар Ломидзе', clickable: true },
       ],
       profiles: [
@@ -380,6 +405,16 @@ const content = computed(() => {
           ],
         },
         {
+          id: 'ichqitidze',
+          initials: 'РИ',
+          name: 'Роман Ичкитидзе',
+          role: 'Директор по управлению качеством',
+          summary: 'Биография не указана.',
+          facts: [
+            { label: 'Статус', value: 'Биография не указана' },
+          ],
+        },
+        {
           id: 'lomidze',
           initials: 'ОЛ',
           name: 'Отар Ломидзе',
@@ -409,7 +444,7 @@ const content = computed(() => {
     executiveTeam: [
       { id: 'lolashvili', role: 'ტექნიკური დირექტორი', name: 'ალბერტ ლოლაშვილი', clickable: true },
       { id: 'jamsapashvili', role: 'წარმოების დირექტორი', name: 'გიორგი ჯამასპაშვილი', clickable: true },
-      { id: 'ichqitidze', role: 'ხარისხის მართვის დირექტორი', name: 'რომან იჩქიტიძე', clickable: false },
+      { id: 'ichqitidze', role: 'ხარისხის მართვის დირექტორი', name: 'რომან იჩქიტიძე', clickable: true },
       { id: 'lomidze', role: 'კომერციული დირექტორი', name: 'ოთარ ლომიძე', clickable: true },
     ],
     profiles: [
@@ -469,6 +504,16 @@ const content = computed(() => {
         ],
       },
       {
+        id: 'ichqitidze',
+        initials: 'რი',
+        name: 'რომან იჩქიტიძე',
+        role: 'ხარისხის მართვის დირექტორი',
+        summary: 'ბიოგრაფია არ არის მოცემული.',
+        facts: [
+          { label: 'სტატუსი', value: 'ბიოგრაფია არ არის მოცემული' },
+        ],
+      },
+      {
         id: 'lomidze',
         initials: 'ოლ',
         name: 'ოთარ ლომიძე',
@@ -486,6 +531,16 @@ const content = computed(() => {
 const selectedProfile = computed(() => {
   return content.value.profiles.find((member) => member.id === selectedId.value) ?? content.value.profiles[0]
 })
+
+const photoById = {
+  qutateladze: qutateladzePhoto,
+  nozadze: nozadzePhoto,
+  lolashvili: lolashviliPhoto,
+  jamsapashvili: jamsapashviliPhoto,
+  lomidze: lomidzePhoto,
+}
+
+const selectedPhotoSrc = computed(() => photoById[selectedId.value] ?? '')
 
 const detailsByLocale = computed(() => {
   if (locale.value !== 'ka') return {}
