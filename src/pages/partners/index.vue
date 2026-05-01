@@ -16,7 +16,6 @@
               <p class="text-sm font-semibold uppercase tracking-[0.3em] text-blue-300/70">{{ pageText.regionsLabel }}</p>
               <h2 class="mt-3 text-3xl font-black text-white">{{ pageText.regionsTitle }}</h2>
             </div>
-            <p class="max-w-2xl text-sm leading-7 text-blue-100/70">{{ pageText.regionsDesc }}</p>
           </div>
 
           <div class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

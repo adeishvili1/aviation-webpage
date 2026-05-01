@@ -46,10 +46,6 @@
             {{ $t('hero.title1') }}
           </h1>
 
-          <p v-if="locale === 'en'" class="text-xl md:text-2xl font-semibold text-blue-100/90 mb-6">
-            {{ $t('hero.subtitle') }}
-          </p>
-
           <p class="text-lg text-blue-200/80 leading-relaxed mb-10 max-w-xl">
             {{ $t('hero.desc') }}
           </p>
@@ -77,9 +73,6 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n'
-
-const { locale } = useI18n()
 
 const particles = [
   { id: 1, size: 4, left: 10, duration: 12, delay: 0 },
