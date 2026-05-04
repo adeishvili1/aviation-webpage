@@ -124,19 +124,14 @@ const footerColumns = [
     titleKey: 'footer.col3',
     to: '/news',
     links: [
-      { labelKey: 'footer.news', to: '/news' },
-      { labelKey: 'footer.events', to: '/news/events' },
       { labelKey: 'footer.gallery', to: '/news/gallery' },
       { labelKey: 'footer.video', to: '/news/video' },
-      { labelKey: 'footer.blog', to: '/news/blog' },
     ],
   },
   {
     titleKey: 'footer.col4',
     to: '/contact',
     links: [
-      { labelKey: 'footer.jobOffers', to: '/careers/jobs' },
-      { labelKey: 'footer.joinUs', to: '/careers/join' },
       { labelKey: 'footer.contact', to: '/contact' },
     ],
   },
