@@ -13,11 +13,11 @@
 
       <div class="space-y-8">
         <div v-for="lic in content.licenses" :key="lic.number" class="bg-blue-500/10 rounded-xl border border-blue-500/20 overflow-hidden">
-          <div v-if="lic.image" class="bg-white p-2 md:p-4">
+          <div v-if="lic.image" class="bg-white overflow-hidden">
             <img
               :src="lic.image"
               :alt="'License ' + lic.number"
-              class="w-full max-h-[42rem] object-contain mx-auto cursor-pointer"
+              class="h-[26rem] w-full object-cover object-center cursor-pointer md:h-[38rem]"
               @click="open(lic.image, 'License ' + lic.number)"
             />
           </div>

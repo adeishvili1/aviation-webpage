@@ -4,14 +4,12 @@
       <div class="grid gap-12 md:grid-cols-2 xl:grid-cols-5">
         <div class="md:col-span-2 xl:col-span-1">
           <router-link to="/" class="mb-6 flex items-center gap-4">
-            <!-- Old logo fallback: <img class="w-28 max-w-full object-contain" src="../assets/tam-white-logo.png" alt="JSC TAM logo"> -->
             <img class="w-32 max-w-full object-contain" src="../assets/tam-navbar-footer-logo.png" alt="JSC TAM logo">
-            <div>
-              <span class="text-[11px] font-bold text-white tracking-wider">სს თბილავიამშენი</span>
-              <span class="mt-1 block text-[9px] font-light tracking-[0.3em] text-blue-300">JSC TBILISI AIRCRAFT MANUFACTURING</span>
-            </div>
           </router-link>
-          <p class="text-sm leading-relaxed text-blue-300/60">{{ footerText.tagline }}</p>
+
+          <router-link to="/about/factory" class="text-sm leading-relaxed text-blue-300/60 transition-colors hover:text-blue-300">
+            {{ footerText.tagline }}
+          </router-link>
 
           <div class="mt-5 space-y-2">
             <a href="tel:+995322700057" class="flex items-center gap-2 text-sm text-blue-300/70 transition-colors hover:text-blue-300">
@@ -32,7 +30,9 @@
             <a
               v-for="social in socials"
               :key="social.name"
-              href="#"
+              :href="social.href"
+              target="_blank"
+              rel="noopener noreferrer"
               class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-900/50 transition-colors hover:bg-blue-600"
               :aria-label="social.name"
             >
@@ -44,22 +44,23 @@
         </div>
 
         <div v-for="col in footerColumns" :key="col.titleKey">
-          <h4 class="mb-6 font-bold text-white">{{ $t(col.titleKey) }}</h4>
+          <router-link :to="col.to" class="mb-6 block font-bold text-white transition-colors hover:text-blue-300">
+            {{ $t(col.titleKey) }}
+          </router-link>
           <ul class="space-y-3">
             <li v-for="link in col.links" :key="link.labelKey">
-              <router-link :to="link.to" class="text-sm text-blue-300/60 transition-colors hover:text-blue-300">{{ $t(link.labelKey) }}</router-link>
+              <router-link :to="link.to" class="text-sm text-blue-300/60 transition-colors hover:text-blue-300">
+                {{ $t(link.labelKey) }}
+              </router-link>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-blue-900/30 pt-8 md:flex-row">
-        <p class="text-sm text-blue-300/40">{{ footerText.copyright }}</p>
-        <div class="flex gap-6">
-          <a href="#" class="text-sm text-blue-300/40 transition-colors hover:text-blue-300">{{ $t('footer.privacy') }}</a>
-          <a href="#" class="text-sm text-blue-300/40 transition-colors hover:text-blue-300">{{ $t('footer.terms') }}</a>
-          <a href="#" class="text-sm text-blue-300/40 transition-colors hover:text-blue-300">Cookie</a>
-        </div>
+        <router-link to="/" class="text-sm text-blue-300/40 transition-colors hover:text-blue-300">
+          {{ footerText.copyright }}
+        </router-link>
       </div>
     </div>
   </footer>
@@ -75,33 +76,34 @@ const footerText = computed(() => {
   if (locale.value === 'en') {
     return {
       tagline: 'Leading aviation enterprise in the region',
-      copyright: '\u00A9 2026 JSC TAM Tbilisi Aircraft Manufacturing. All rights reserved.',
+      copyright: '© 2026 JSC TAM Tbilisi Aircraft Manufacturing. All rights reserved.',
     }
   }
 
   if (locale.value === 'ru') {
     return {
-      tagline: '\u0412\u0435\u0434\u0443\u0449\u0435\u0435 \u0430\u0432\u0438\u0430\u0446\u0438\u043e\u043d\u043d\u043e\u0435 \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u044f\u0442\u0438\u0435 \u0432 \u0440\u0435\u0433\u0438\u043e\u043d\u0435',
-      copyright: '\u00A9 2026 JSC TAM Tbilisi Aircraft Manufacturing. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.',
+      tagline: 'Ведущее авиационное предприятие в регионе',
+      copyright: '© 2026 JSC TAM Tbilisi Aircraft Manufacturing. Все права защищены.',
     }
   }
 
   return {
-    tagline: '\u10ec\u10d0\u10db\u10e7\u10d5\u10d0\u10dc\u10d8 \u10e1\u10d0\u10d0\u10d5\u10d8\u10d0\u10ea\u10d8\u10dd \u10e1\u10d0\u10ec\u10d0\u10e0\u10db\u10dd \u10e0\u10d4\u10d2\u10d8\u10dd\u10dc\u10e8\u10d8',
-    copyright: '\u00A9 2026 JSC TAM Tbilisi Aircraft Manufacturing. \u10e7\u10d5\u10d4\u10da\u10d0 \u10e3\u10e4\u10da\u10d4\u10d1\u10d0 \u10d3\u10d0\u10ea\u10e3\u10da\u10d8\u10d0.',
+    tagline: 'წამყვანი საავიაციო საწარმო რეგიონში',
+    copyright: '© 2026 JSC TAM Tbilisi Aircraft Manufacturing. ყველა უფლება დაცულია.',
   }
 })
 
 const socials = [
-  { name: 'Facebook', icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
-  { name: 'YouTube', icon: 'M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
-  { name: 'LinkedIn', icon: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
-  { name: 'Instagram', icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z' },
+  { name: 'Facebook', href: 'https://www.facebook.com/share/1EWd6ast1u/?mibextid=wwXIfr', icon: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
+  { name: 'YouTube', href: 'https://youtube.com/@jsctamtbilisiaircraftmanufactu?si=b03N7H6gS7a_XAti', icon: 'M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/%E1%83%A1%E1%83%A1-%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%90%E1%83%95%E1%83%98%E1%83%90%E1%83%9B%E1%83%A8%E1%83%94%E1%83%9C%E1%83%98-%E2%80%A2-jsc-tbilisi-aircraft-manufacturing/', icon: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+  { name: 'Instagram', href: 'https://www.instagram.com/', icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z' },
 ]
 
 const footerColumns = [
   {
     titleKey: 'footer.col1',
+    to: '/about/history',
     links: [
       { labelKey: 'footer.history', to: '/about/history' },
       { labelKey: 'footer.management', to: '/about/management' },
@@ -110,6 +112,7 @@ const footerColumns = [
   },
   {
     titleKey: 'footer.col2',
+    to: '/products/military/rubber',
     links: [
       { labelKey: 'footer.military', to: '/products/military/rubber' },
       { labelKey: 'footer.services', to: '/products/services' },
@@ -119,6 +122,7 @@ const footerColumns = [
   },
   {
     titleKey: 'footer.col3',
+    to: '/news',
     links: [
       { labelKey: 'footer.news', to: '/news' },
       { labelKey: 'footer.events', to: '/news/events' },
@@ -129,6 +133,7 @@ const footerColumns = [
   },
   {
     titleKey: 'footer.col4',
+    to: '/contact',
     links: [
       { labelKey: 'footer.jobOffers', to: '/careers/jobs' },
       { labelKey: 'footer.joinUs', to: '/careers/join' },

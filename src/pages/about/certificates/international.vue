@@ -16,7 +16,7 @@
           <img
             src="../../../assets/docx-images/image15.png"
             alt="ISO 9001 certificate"
-            class="w-full max-h-[42rem] object-contain p-2 md:p-4 cursor-pointer"
+            class="h-[26rem] w-full object-cover object-center cursor-pointer md:h-[38rem]"
             @click="open(isoCertificateImage, 'ISO 9001 certificate')"
           />
         </div>
@@ -24,7 +24,7 @@
           <img
             src="../../../assets/lic4.png"
             alt="International certificate"
-            class="w-full max-h-[42rem] object-contain p-2 md:p-4 cursor-pointer"
+            class="h-[26rem] w-full object-cover object-center cursor-pointer md:h-[38rem]"
             @click="open(internationalCertificateImage, 'International certificate')"
           />
         </div>

@@ -16,22 +16,27 @@
           <div class="flex flex-col items-center">
             <button
               type="button"
-              class="w-72 rounded-2xl border border-blue-400/40 bg-blue-600/20 px-5 py-4 text-center shadow-lg shadow-blue-500/10 transition-all hover:bg-blue-600/30"
+              class="w-72 rounded-2xl border px-5 py-4 text-center shadow-lg transition-all"
+              :class="selectedId === 'qutateladze'
+                ? 'border-blue-300 bg-blue-600/30 shadow-blue-500/20'
+                : 'border-blue-400/40 bg-blue-600/20 shadow-blue-500/10 hover:bg-blue-600/30'"
               @click="selectedId = 'qutateladze'"
             >
               <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.topRole }}</div>
               <div class="mt-2 text-lg font-black text-white">{{ content.topName }}</div>
             </button>
 
-            <div class="h-8 w-px bg-blue-400/40"></div>
-            <div class="h-px w-[34rem] bg-blue-400/30"></div>
+            <div class="h-8"></div>
 
             <div class="grid w-full max-w-4xl grid-cols-2 gap-10">
               <div class="flex flex-col items-center">
-                <div class="h-8 w-px bg-blue-400/40"></div>
+                <div class="h-8"></div>
                 <button
                   type="button"
-                  class="w-72 rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-center transition-all hover:border-blue-300/50 hover:bg-brand-900/80"
+                  class="w-72 rounded-2xl border px-5 py-4 text-center transition-all"
+                  :class="selectedId === 'beridze'
+                    ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                    : 'border-blue-400/30 bg-brand-950/70 hover:border-blue-300/50 hover:bg-brand-900/80'"
                   @click="selectedId = 'beridze'"
                 >
                   <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.leftRole }}</div>
@@ -40,10 +45,13 @@
               </div>
 
               <div class="flex flex-col items-center">
-                <div class="h-8 w-px bg-blue-400/40"></div>
+                <div class="h-8"></div>
                 <button
                   type="button"
-                  class="w-72 rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-center transition-all hover:border-blue-300/50 hover:bg-brand-900/80"
+                  class="w-72 rounded-2xl border px-5 py-4 text-center transition-all"
+                  :class="selectedId === 'nozadze'
+                    ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                    : 'border-blue-400/30 bg-brand-950/70 hover:border-blue-300/50 hover:bg-brand-900/80'"
                   @click="selectedId = 'nozadze'"
                 >
                   <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.rightRole }}</div>
@@ -52,26 +60,23 @@
               </div>
             </div>
 
-            <div class="flex w-full max-w-4xl justify-start pl-[22%]">
-              <div class="flex flex-col items-center">
-                <div class="h-8 w-px bg-blue-400/40"></div>
-                <div class="h-px w-[34rem] bg-blue-400/30"></div>
-                <div class="grid w-[34rem] grid-cols-4 gap-4 pt-8">
-                  <button
-                    v-for="member in content.executiveTeam"
-                    :key="member.id"
-                    type="button"
-                    class="rounded-2xl border px-4 py-4 text-center transition-all"
-                    :class="member.clickable
-                      ? 'border-blue-400/25 bg-brand-950/65 hover:border-blue-300/50 hover:bg-brand-900/80'
-                      : 'cursor-default border-blue-500/10 bg-brand-950/45'"
-                    @click="selectMember(member.id, member.clickable)"
-                  >
-                    <div class="mx-auto mb-3 h-6 w-px bg-blue-400/40"></div>
-                    <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300">{{ member.role }}</div>
-                    <div class="mt-2 text-sm font-bold leading-snug text-white">{{ member.name }}</div>
-                  </button>
-                </div>
+            <div class="w-full pt-8">
+              <div class="mx-auto grid w-full max-w-5xl grid-cols-4 gap-4 justify-items-center">
+                <button
+                  v-for="member in content.executiveTeam"
+                  :key="member.id"
+                  type="button"
+                  class="w-full max-w-[12rem] rounded-2xl border px-4 py-4 text-center transition-all"
+                  :class="member.clickable
+                    ? selectedId === member.id
+                      ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                      : 'border-blue-400/25 bg-brand-950/65 hover:border-blue-300/50 hover:bg-brand-900/80'
+                    : 'cursor-default border-blue-500/10 bg-brand-950/45'"
+                  @click="selectMember(member.id, member.clickable)"
+                >
+                  <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300">{{ member.role }}</div>
+                  <div class="mt-2 text-sm font-bold leading-snug text-white">{{ member.name }}</div>
+                </button>
               </div>
             </div>
           </div>
@@ -80,7 +85,10 @@
         <div class="grid gap-4 lg:hidden">
           <button
             type="button"
-            class="rounded-2xl border border-blue-400/40 bg-blue-600/20 px-5 py-4 text-left"
+            class="rounded-2xl border px-5 py-4 text-left transition-all active:scale-[0.99]"
+            :class="selectedId === 'qutateladze'
+              ? 'border-blue-300 bg-blue-600/30 shadow-lg shadow-blue-500/20'
+              : 'border-blue-400/40 bg-blue-600/20'"
             @click="selectedId = 'qutateladze'"
           >
             <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.topRole }}</div>
@@ -90,7 +98,10 @@
           <div class="grid gap-4 sm:grid-cols-2">
             <button
               type="button"
-              class="rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-left"
+              class="rounded-2xl border px-5 py-4 text-left transition-all active:scale-[0.99]"
+              :class="selectedId === 'beridze'
+                ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                : 'border-blue-400/30 bg-brand-950/70'"
               @click="selectedId = 'beridze'"
             >
               <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.leftRole }}</div>
@@ -99,7 +110,10 @@
 
             <button
               type="button"
-              class="rounded-2xl border border-blue-400/30 bg-brand-950/70 px-5 py-4 text-left"
+              class="rounded-2xl border px-5 py-4 text-left transition-all active:scale-[0.99]"
+              :class="selectedId === 'nozadze'
+                ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                : 'border-blue-400/30 bg-brand-950/70'"
               @click="selectedId = 'nozadze'"
             >
               <div class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{{ content.rightRole }}</div>
@@ -112,9 +126,11 @@
               v-for="member in content.executiveTeam"
               :key="member.id"
               type="button"
-              class="rounded-2xl border px-5 py-4 text-left"
+              class="rounded-2xl border px-5 py-4 text-left transition-all active:scale-[0.99]"
               :class="member.clickable
-                ? 'border-blue-400/25 bg-brand-950/65'
+                ? selectedId === member.id
+                  ? 'border-blue-300 bg-blue-600/20 shadow-lg shadow-blue-500/15'
+                  : 'border-blue-400/25 bg-brand-950/65'
                 : 'cursor-default border-blue-500/10 bg-brand-950/45'"
               @click="selectMember(member.id, member.clickable)"
             >

@@ -13,8 +13,8 @@
         </div>
 
         <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-4 mb-6">
-          <div v-for="image in helicopterImages" :key="image.src" class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img :src="image.src" :alt="image.alt" class="w-full h-44 object-cover" />
+          <div v-for="(image, index) in helicopterImages" :key="image.src" class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            <img :src="image.src" :alt="image.alt" class="w-full h-44 object-cover cursor-pointer" @click="openGallery(helicopterImages, index)" />
           </div>
         </div>
 
@@ -38,18 +38,18 @@
 
         <div class="grid md:grid-cols-2 gap-4 mt-6">
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/h6.png" alt="Helicopter modernization scheme" class="w-full h-72 object-contain bg-slate-50 p-3" />
+            <img src="../../../assets/h6.png" alt="Helicopter modernization scheme" class="w-full h-72 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(helicopterSchemeImages, 0)" />
           </div>
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/h7.png" alt="Avionics upgrade scheme" class="w-full h-72 object-contain bg-slate-50 p-3" />
+            <img src="../../../assets/h7.png" alt="Avionics upgrade scheme" class="w-full h-72 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(helicopterSchemeImages, 1)" />
           </div>
         </div>
 
         <div class="mt-6 p-6 bg-blue-500/10 rounded-xl border border-blue-500/15">
           <h4 class="text-white font-bold text-lg mb-3">{{ content.specialVariantsTitle }}</h4>
           <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
-            <div v-for="image in specialVariantImages" :key="image.src" class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <img :src="image.src" :alt="image.alt" class="w-full h-44 object-cover" />
+            <div v-for="(image, index) in specialVariantImages" :key="image.src" class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+              <img :src="image.src" :alt="image.alt" class="w-full h-44 object-cover cursor-pointer" @click="openGallery(specialVariantImages, index)" />
             </div>
           </div>
         </div>
@@ -58,10 +58,10 @@
           <h4 class="text-white font-bold text-lg mb-3">{{ content.vipTitle }}</h4>
           <div class="grid md:grid-cols-2 gap-4">
             <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <img src="../../../assets/hh.jpg" alt="VIP helicopter cabin" class="w-full h-56 object-cover" />
+              <img src="../../../assets/hh.jpg" alt="VIP helicopter cabin" class="w-full h-56 object-cover cursor-pointer" @click="openGallery(vipImages, 0)" />
             </div>
             <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <img src="../../../assets/hh1.jpg" alt="VIP helicopter interior" class="w-full h-56 object-cover" />
+              <img src="../../../assets/hh1.jpg" alt="VIP helicopter interior" class="w-full h-56 object-cover cursor-pointer" @click="openGallery(vipImages, 1)" />
             </div>
           </div>
         </div>
@@ -75,10 +75,10 @@
 
         <div class="grid md:grid-cols-2 gap-4 mb-6">
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/hhhh.jpg" alt="Su-25 aircraft" class="w-full h-64 object-cover" />
+            <img src="../../../assets/hhhh.jpg" alt="Su-25 aircraft" class="w-full h-64 object-cover cursor-pointer" @click="openGallery(aircraftHeroImages, 0)" />
           </div>
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/hhhhh.jpg" alt="Su-25UB aircraft" class="w-full h-64 object-cover" />
+            <img src="../../../assets/hhhhh.jpg" alt="Su-25UB aircraft" class="w-full h-64 object-cover cursor-pointer" @click="openGallery(aircraftHeroImages, 1)" />
           </div>
         </div>
 
@@ -107,11 +107,11 @@
           </div>
           <p class="text-blue-100/90 leading-relaxed mb-5">{{ content.suModernization }}</p>
           <div class="grid sm:grid-cols-2 xl:grid-cols-5 gap-4">
-            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/zz.png" alt="Su-25 modernization" class="w-full h-44 object-contain bg-slate-50 p-3" /></div>
-            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/x.png" alt="Su-25 avionics" class="w-full h-44 object-contain bg-slate-50 p-3" /></div>
-            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/xxz.png" alt="Su-25 navigation" class="w-full h-44 object-contain bg-slate-50 p-3" /></div>
-            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/xx.png" alt="Su-25 weapon systems" class="w-full h-44 object-contain bg-slate-50 p-3" /></div>
-            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/z.png" alt="Su-25 upgrade configuration" class="w-full h-44 object-contain bg-slate-50 p-3" /></div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/zz.png" alt="Su-25 modernization" class="w-full h-44 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(suModernizationImages, 0)" /></div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/x.png" alt="Su-25 avionics" class="w-full h-44 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(suModernizationImages, 1)" /></div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/xxz.png" alt="Su-25 navigation" class="w-full h-44 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(suModernizationImages, 2)" /></div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/xx.png" alt="Su-25 weapon systems" class="w-full h-44 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(suModernizationImages, 3)" /></div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5"><img src="../../../assets/z.png" alt="Su-25 upgrade configuration" class="w-full h-44 object-contain bg-slate-50 p-3 cursor-pointer" @click="openGallery(suModernizationImages, 4)" /></div>
           </div>
         </article>
 
@@ -122,7 +122,7 @@
           </div>
           <p class="text-blue-100/90 leading-relaxed mb-5">{{ content.l39Text }}</p>
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5 max-w-3xl">
-            <img src="../../../assets/xxxxx.png" alt="L-39 aircraft" class="w-full h-72 object-contain bg-slate-50 p-4" />
+            <img src="../../../assets/xxxxx.png" alt="L-39 aircraft" class="w-full h-72 object-contain bg-slate-50 p-4 cursor-pointer" @click="openGallery(l39Images, 0)" />
           </div>
         </article>
 
@@ -133,7 +133,7 @@
           </div>
           <p class="text-blue-100/90 leading-relaxed mb-5">{{ content.an2Text }}</p>
           <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5 max-w-3xl">
-            <img src="../../../assets/zxzzaxzx.png" alt="An-2 aircraft" class="w-full h-72 object-contain bg-slate-50 p-4" />
+            <img src="../../../assets/zxzzaxzx.png" alt="An-2 aircraft" class="w-full h-72 object-contain bg-slate-50 p-4 cursor-pointer" @click="openGallery(an2Images, 0)" />
           </div>
         </article>
       </section>
@@ -146,10 +146,25 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SectionLayout from '../../../layouts/SectionLayout.vue'
 import { getSidebarLinks } from '../../../data/navigation.js'
+import { useLightbox } from '../../../composables/useLightbox'
 
 const { locale, t: $t } = useI18n()
+const { openGallery } = useLightbox()
 const sidebarLinks = getSidebarLinks('products')
 const aircraftModels = ['Su-25', 'Su-25UB', 'L-39']
+const helicopterSchemeImage = new URL('../../../assets/h6.png', import.meta.url).href
+const avionicsSchemeImage = new URL('../../../assets/h7.png', import.meta.url).href
+const vipCabinImage = new URL('../../../assets/hh.jpg', import.meta.url).href
+const vipInteriorImage = new URL('../../../assets/hh1.jpg', import.meta.url).href
+const su25Image = new URL('../../../assets/hhhh.jpg', import.meta.url).href
+const su25ubImage = new URL('../../../assets/hhhhh.jpg', import.meta.url).href
+const suModernizationImage = new URL('../../../assets/zz.png', import.meta.url).href
+const suAvionicsImage = new URL('../../../assets/x.png', import.meta.url).href
+const suNavigationImage = new URL('../../../assets/xxz.png', import.meta.url).href
+const suWeaponsImage = new URL('../../../assets/xx.png', import.meta.url).href
+const suUpgradeConfigImage = new URL('../../../assets/z.png', import.meta.url).href
+const l39Image = new URL('../../../assets/xxxxx.png', import.meta.url).href
+const an2Image = new URL('../../../assets/zxzzaxzx.png', import.meta.url).href
 
 const helicopterImages = [
   { src: new URL('../../../assets/h.jpg', import.meta.url).href, alt: 'Mi-8 helicopter' },
@@ -165,6 +180,32 @@ const specialVariantImages = [
   { src: new URL('../../../assets/h10.jpg', import.meta.url).href, alt: 'Medical variant' },
   { src: new URL('../../../assets/h11.png', import.meta.url).href, alt: 'Specialized configuration' },
 ]
+
+const helicopterSchemeImages = [
+  { src: helicopterSchemeImage, alt: 'Helicopter modernization scheme' },
+  { src: avionicsSchemeImage, alt: 'Avionics upgrade scheme' },
+]
+
+const vipImages = [
+  { src: vipCabinImage, alt: 'VIP helicopter cabin' },
+  { src: vipInteriorImage, alt: 'VIP helicopter interior' },
+]
+
+const aircraftHeroImages = [
+  { src: su25Image, alt: 'Su-25 aircraft' },
+  { src: su25ubImage, alt: 'Su-25UB aircraft' },
+]
+
+const suModernizationImages = [
+  { src: suModernizationImage, alt: 'Su-25 modernization' },
+  { src: suAvionicsImage, alt: 'Su-25 avionics' },
+  { src: suNavigationImage, alt: 'Su-25 navigation' },
+  { src: suWeaponsImage, alt: 'Su-25 weapon systems' },
+  { src: suUpgradeConfigImage, alt: 'Su-25 upgrade configuration' },
+]
+
+const l39Images = [{ src: l39Image, alt: 'L-39 aircraft' }]
+const an2Images = [{ src: an2Image, alt: 'An-2 aircraft' }]
 
 const content = computed(() => {
   if (locale.value === 'en') {
