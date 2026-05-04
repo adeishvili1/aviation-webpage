@@ -18,6 +18,8 @@
     "products_helicopters_desc": "Aerial vehicles",
     "products_missiles": "Missiles",
     "products_missiles_desc": "Missile systems",
+    "products_recorders": "Flight Recorders",
+    "products_recorders_desc": "Recorder modernization",
     "products_services": "Services",
     "products_trainings": "Trainings",
     "products_technical": "Technical Capabilities",
@@ -61,7 +63,7 @@
     "cat2_badge": "Service",
     "cat3_title": "Aircraft Repair",
     "cat3_desc": "Full overhaul, modernization of Su-25 and Su-25UB combat aircraft and the Su-25 GE-31 project.",
-    "cat3_badge": "Overhaul"
+    "cat3_badge": "Repair"
   },
   "innovation": {
     "label": "Innovation",

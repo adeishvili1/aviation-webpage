@@ -15,6 +15,7 @@ const routes = [
   { path: '/products/military/rubber', name: 'MilitaryRubber', component: () => import('../pages/products/military/rubber.vue') },
   { path: '/products/military/helicopters', name: 'MilitaryHelicopters', component: () => import('../pages/products/military/helicopters.vue') },
   { path: '/products/military/missiles', name: 'MilitaryMissiles', component: () => import('../pages/products/military/missiles.vue') },
+  { path: '/products/military/recorders', name: 'MilitaryRecorders', component: () => import('../pages/products/military/recorders.vue') },
   { path: '/products/services', name: 'ProductsServices', component: () => import('../pages/products/services.vue') },
   { path: '/products/trainings', name: 'ProductsTrainings', component: () => import('../pages/products/trainings.vue') },
   { path: '/products/technical', name: 'ProductsTechnical', component: () => import('../pages/products/technical.vue') },

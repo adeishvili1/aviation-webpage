@@ -15,16 +15,16 @@
 
     <div class="bg-brand-900/40 backdrop-blur-xl rounded-xl border border-blue-500/15 shadow-2xl shadow-black/30 p-8">
       <div class="border-l-4 border-blue-400 pl-6 mb-6">
-        <h3 class="text-2xl font-bold text-white">Performance Specifications</h3>
-        <p class="text-blue-200/60 text-sm mt-1">Elite Jet and Elite Jet NG</p>
+        <h3 class="text-2xl font-bold text-white">{{ content.performanceTitle }}</h3>
+        <p class="text-blue-200/60 text-sm mt-1">{{ content.performanceSubtitle }}</p>
       </div>
 
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-blue-500/20 text-left">
-              <th class="pb-3 pr-4 text-blue-200 font-semibold">Performance Specifications</th>
-              <th class="pb-3 text-blue-200 font-semibold">Value</th>
+              <th class="pb-3 pr-4 text-blue-200 font-semibold">{{ content.performanceColumn }}</th>
+              <th class="pb-3 text-blue-200 font-semibold">{{ content.valueColumn }}</th>
             </tr>
           </thead>
           <tbody>
@@ -108,21 +108,59 @@ import SectionLayout from '../../layouts/SectionLayout.vue'
 const { locale } = useI18n()
 
 const sidebarLinks = computed(() => [
-  { to: '/innovation/elite-jet', label: 'Elite Jet / Elite Jet NG', icon: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8' },
-  { to: '/innovation/ge-31-bora', label: 'GE-31 Bora', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+  {
+    to: '/innovation/elite-jet',
+    label: locale.value === 'ka' ? 'ელიტ ჯეტი / ელიტ ჯეტ NG' : 'Elite Jet / Elite Jet NG',
+    icon: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
+  },
+  {
+    to: '/innovation/ge-31-bora',
+    label: locale.value === 'ka' ? 'GE-31 ბორა' : 'GE-31 Bora',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
 ])
 
-const specs = [
-  { label: 'Max operating Mach number (MMO)', value: '0.72' },
-  { label: 'Stalling speed, MLW, forward CG, Landing configuration (VSO)', value: '140 km/h' },
-  { label: 'Max Cruise', value: '740 km/h' },
-  { label: 'Rate of climb, AEO, ISA, Sea Level, MTOW', value: '20 m/sec' },
-  { label: 'Rate of climb, OEI, ISA, Sea Level, MTOW', value: '5.0 m/sec' },
-  { label: 'Balanced Field Length', value: '1100 m' },
-  { label: 'Landing distance from 15 m (ISA, SL, Flaps 40°, MLW)', value: '900 m' },
-  { label: 'Maximum range, 2 pilot + 4 passengers', value: '2700 Km' },
-  { label: 'Maximum Operating altitude', value: '12500 m' },
-]
+const specs = computed(() => {
+  if (locale.value === 'en') {
+    return [
+      { label: 'Max operating Mach number (MMO)', value: '0.72' },
+      { label: 'Stalling speed, MLW, forward CG, Landing configuration (VSO)', value: '140 km/h' },
+      { label: 'Max Cruise', value: '740 km/h' },
+      { label: 'Rate of climb, AEO, ISA, Sea Level, MTOW', value: '20 m/sec' },
+      { label: 'Rate of climb, OEI, ISA, Sea Level, MTOW', value: '5.0 m/sec' },
+      { label: 'Balanced Field Length', value: '1100 m' },
+      { label: 'Landing distance from 15 m (ISA, SL, Flaps 40°, MLW)', value: '900 m' },
+      { label: 'Maximum range, 2 pilot + 4 passengers', value: '2700 Km' },
+      { label: 'Maximum Operating altitude', value: '12500 m' },
+    ]
+  }
+
+  if (locale.value === 'ru') {
+    return [
+      { label: 'Максимальное эксплуатационное число Маха (MMO)', value: '0.72' },
+      { label: 'Скорость сваливания, MLW, передняя центровка, посадочная конфигурация (VSO)', value: '140 км/ч' },
+      { label: 'Максимальная крейсерская скорость', value: '740 км/ч' },
+      { label: 'Скорость набора высоты, AEO, ISA, уровень моря, MTOW', value: '20 м/сек' },
+      { label: 'Скорость набора высоты, OEI, ISA, уровень моря, MTOW', value: '5.0 м/сек' },
+      { label: 'Сбалансированная длина ВПП', value: '1100 м' },
+      { label: 'Посадочная дистанция с 15 м (ISA, SL, закрылки 40°, MLW)', value: '900 м' },
+      { label: 'Максимальная дальность, 2 пилота + 4 пассажира', value: '2700 км' },
+      { label: 'Максимальная эксплуатационная высота', value: '12500 м' },
+    ]
+  }
+
+  return [
+    { label: 'მაქსიმალური საექსპლუატაციო მახის რიცხვი (MMO)', value: '0.72' },
+    { label: 'ჩამოვარდნის სიჩქარე, MLW, წინა ცენტრირება, დასაფრენი კონფიგურაცია (VSO)', value: '140 კმ/სთ' },
+    { label: 'მაქსიმალური კრუიზული სიჩქარე', value: '740 კმ/სთ' },
+    { label: 'სიმაღლის აკრების სიჩქარე, AEO, ISA, ზღვის დონე, MTOW', value: '20 მ/წმ' },
+    { label: 'სიმაღლის აკრების სიჩქარე, OEI, ISA, ზღვის დონე, MTOW', value: '5.0 მ/წმ' },
+    { label: 'დაბალანსებული ასაფრენი მანძილი', value: '1100 მ' },
+    { label: 'დაფრენის მანძილი 15 მ-დან (ISA, SL, ფრთაგამშვები 40°, MLW)', value: '900 მ' },
+    { label: 'მაქსიმალური მანძილი, 2 პილოტი + 4 მგზავრი', value: '2700 კმ' },
+    { label: 'მაქსიმალური საექსპლუატაციო სიმაღლე', value: '12500 მ' },
+  ]
+})
 
 const content = computed(() => {
   if (locale.value === 'en') {
@@ -132,6 +170,10 @@ const content = computed(() => {
       sidebarTitle: 'Innovation',
       title: 'ELITE-Jet and ELITE-Jet NG',
       intro: 'The 6-seat and 9-seat ELITE-Jet is a civilian jet aircraft built with composite materials and equipped with modern technologies.',
+      performanceTitle: 'Performance Specifications',
+      performanceSubtitle: 'Elite Jet and Elite Jet NG',
+      performanceColumn: 'Performance Specifications',
+      valueColumn: 'Value',
       systemsTitle: 'Interior Systems',
       systemsSubtitle: 'Interior and onboard equipment described in the concept',
       interiorSystems: [
@@ -149,6 +191,7 @@ const content = computed(() => {
       avionicsTitle: 'Avionics and cabin control system',
     }
   }
+
   if (locale.value === 'ru') {
     return {
       heroTitle: 'Elite Jet / Elite Jet NG',
@@ -156,6 +199,10 @@ const content = computed(() => {
       sidebarTitle: 'Инновации',
       title: 'ELITE-Jet и ELITE-Jet NG',
       intro: '6-местный и 9-местный ELITE-Jet — это гражданский реактивный самолёт, созданный из композитных материалов и оснащённый современными технологиями.',
+      performanceTitle: 'Летно-технические характеристики',
+      performanceSubtitle: 'Elite Jet и Elite Jet NG',
+      performanceColumn: 'Летно-технические характеристики',
+      valueColumn: 'Значение',
       systemsTitle: 'Внутренние системы',
       systemsSubtitle: 'Интерьер и бортовое оснащение, описанные в концепции',
       interiorSystems: [
@@ -173,18 +220,23 @@ const content = computed(() => {
       avionicsTitle: 'Авионика и система управления салоном',
     }
   }
+
   return {
-    heroTitle: 'Elite Jet / Elite Jet NG',
-    heroSubtitle: 'სამოქალაქო საფრენი აპარატი, 6 და 9 ადგილიანი კონცეფცია',
+    heroTitle: 'ელიტ ჯეტი / ელიტ ჯეტ NG',
+    heroSubtitle: 'სამოქალაქო თვითმფრინავი, 6 და 9-ადგილიანი კონცეფცია',
     sidebarTitle: 'ინოვაცია',
     title: 'ELITE-Jet და ELITE-Jet NG',
-    intro: '6-ადგილიანი და 9-ადგილიანი ELITE-Jet წარმოადგენს კომპოზიტური მასალებით შექმნილ, თანამედროვე ტექნოლოგიებით აღჭურვილ სამოქალაქო JET ტიპის საფრენ აპარატს.',
+    intro: '6-ადგილიანი და 9-ადგილიანი ELITE-Jet წარმოადგენს კომპოზიტური მასალებით შექმნილ, თანამედროვე ტექნოლოგიებით აღჭურვილ სამოქალაქო JET ტიპის თვითმფრინავს.',
+    performanceTitle: 'საფრენ-ტექნიკური მახასიათებლები',
+    performanceSubtitle: 'ელიტ ჯეტი და ელიტ ჯეტ NG',
+    performanceColumn: 'საფრენ-ტექნიკური მახასიათებლები',
+    valueColumn: 'მნიშვნელობა',
     systemsTitle: 'შიდა სისტემები',
     systemsSubtitle: 'დოკუმენტში აღწერილი შიდა ინტერიერი და აღჭურვილობა',
     interiorSystems: [
       'სატელიტური კომუნიკაციის სისტემა, SatCom.',
       'აუდიო სისტემა CD-პლეერით და ინდივიდუალური ყურსასმენებით.',
-      'ვიდეო სისტემა DVD-პლეერით და ინდივიდუალური 8-დუიმიანი ჩასაერთებელი მონიტორებით.',
+      'ვიდეო სისტემა DVD-პლეერით და ინდივიდუალური 8-დუიმიანი ჩასაერტებელი მონიტორებით.',
       'Air Show სისტემა მსოფლიო და რეგიონული რუკებით და ფრენის შესახებ ინფორმაციის ჩვენებით.',
     ],
     galleyTitle: 'სრულად აღჭურვილი სამზარეულო ზონა',

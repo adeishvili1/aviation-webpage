@@ -12,12 +12,14 @@
     "certs_international_desc": "ISO და EN სერტიფიკატები",
     "products": "პროდუქცია",
     "products_military": "სამხედრო ავიაცია",
-    "products_rubber": "რეზინტექნიკური წარმოება",
-    "products_rubber_desc": "რეზინტექნიკური პროდუქცია",
-    "products_helicopters": "ვერტმფრენები & თვითმფრინავები",
+    "products_rubber": "რეზინა ტექნიკური საწარმო",
+    "products_rubber_desc": "რეზინა ნაკეთობები",
+    "products_helicopters": "ვერტმფრენები და თვითმფრინავები",
     "products_helicopters_desc": "საჰაერო ხომალდები",
     "products_missiles": "რაკეტები",
     "products_missiles_desc": "სარაკეტო სისტემები",
+    "products_recorders": "ფრენების ჩამწერი მოწყობილობები",
+    "products_recorders_desc": "ჩამწერი მოწყობილობების მოდერნიზება",
     "products_services": "სერვისი",
     "products_trainings": "ტრენინგები",
     "products_technical": "ტექნიკური შესაძლებლობები",
@@ -61,7 +63,7 @@
     "cat2_badge": "სერვისი",
     "cat3_title": "თვითმფრინავების რემონტი",
     "cat3_desc": "Su-25 და Su-25UB ტიპის საბრძოლო თვითმფრინავების წარმოება, კაპიტალური რემონტი, სასიცოცხლო რესურსის გახანგრძლივება და მოდერნიზება",
-    "cat3_badge": "ოვერჰოლი"
+    "cat3_badge": "რემონტი"
   },
   "innovation": {
     "label": "ინოვაცია",

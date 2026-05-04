@@ -35,13 +35,16 @@
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-start">
-          <div class="grid sm:grid-cols-2 gap-4">
+        <div class="space-y-6">
+          <div class="grid md:grid-cols-3 gap-4">
             <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <img src="../../../assets/a4.png" :alt="content.fuelTitle" class="w-full h-56 object-contain bg-slate-50 p-3" />
+              <img src="../../../assets/a4.png" :alt="content.fuelTitle" class="w-full h-64 object-cover bg-slate-50" />
             </div>
             <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <img src="../../../assets/a5.png" :alt="content.fuelAlt" class="w-full h-56 object-contain bg-slate-50 p-3" />
+              <img src="../../../assets/a5.png" :alt="content.fuelAlt" class="w-full h-64 object-cover bg-slate-50 object-center" />
+            </div>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
+              <img src="../../../assets/a8.png" :alt="content.fuelAlt" class="w-full h-64 object-cover bg-slate-50 object-top" />
             </div>
           </div>
 
@@ -64,15 +67,6 @@
           <p class="text-blue-200/80 mt-2 leading-relaxed">
             {{ content.productsDesc }}
           </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4 mb-6">
-          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/a6.png" :alt="content.productsTitle" class="w-full h-64 object-cover" />
-          </div>
-          <div class="rounded-xl overflow-hidden border border-white/10 bg-white/5">
-            <img src="../../../assets/a7.png" :alt="content.productsAlt" class="w-full h-64 object-cover" />
-          </div>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
