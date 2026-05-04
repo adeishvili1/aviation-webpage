@@ -75,7 +75,6 @@ const laboratoryImages = [
 const sectionImages = {
   ai9v: [
     { src: new URL('../../assets/tech-ai9v-1.png', import.meta.url).href, alt: 'AI-9V APU stand control unit' },
-    { src: new URL('../../assets/tech-ai9v-2.png', import.meta.url).href, alt: 'AI-9V APU stand equipment' },
   ],
   flight: [
     { src: new URL('../../assets/m.png', import.meta.url).href, alt: 'Flight-test territory' },
